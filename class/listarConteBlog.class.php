@@ -61,7 +61,7 @@ function listar($limit){
               <span class="sep">/</span> Commentarios: <a href="#"> 4 Comments</a>
             </p>
           </div>
-		  		    <a href="?pagina=artigo"> <button type="submit" class="btn btn-primary" id="btn" >Ler Agora ...</button></a>
+		  		    <a href="?pagina='.$result["titulo"].'"> <button type="submit" class="btn btn-primary" id="btn" >Ler Agora ...</button></a>
         </header>
 
         <div class="post-desc">
