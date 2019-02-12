@@ -1,0 +1,130 @@
+
+
+
+<section class="post-wrapper-top">
+  <div class="container">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+      <ul class="breadcrumb">
+
+      <h2>BLOG - Descubra tudo!</h2>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+    </div>
+  </div>
+</section>
+<!-- end post-wrapper-top -->
+
+
+<section class="section1">
+  <div class="container clearfix">
+  
+  <!-- ********************************************************** -->
+    <div class="content col-lg-8 col-md-8 col-sm-8 col-xs-12 clearfix">
+	  	
+				<?php
+			
+				# SCRIPT DE QUERY STRING DESENVOLVIDO POR LEDSON OLIVEIRA .
+				$pagA	= @$_GET['artigo']; # Variável que recebe a página.
+				$pastaA	= "pages"; # Pasta onde as páginas irão ficar.
+
+		
+					if( !isset($pagA) ){
+						include $pastaA."/"."listartigos.html";
+					}
+					else if( !file_exists( $pastaA."/".$pagA.".html" ) ){
+						
+						echo "<br>
+						<center><div class='alert alert-warning alert-dismissable'>
+									<button type='reset' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+									<h4><i class='icon fa fa-warning'></i> Atenção</h4>
+									Página não encontrada , favor entrar em contato com o administrador.
+								  </div></center>";			
+					}
+					else{
+						include $pastaA."/".$pagA.".html";	
+					}	
+					
+			?>		  
+	  
+	  
+    </div>
+	
+
+	
+    <!-- end content ************************************** -->
+
+
+    <!-- SIDEBAR -->
+    <div id="sidebar" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+      <div class="widget">
+        <h4 class="title">
+                        <span>Inscreva-se</span>
+                    </h4>
+        <form id="subscribe" action="mc.php" name="subscribe" method="post">
+          <input type="text" name="name" id="name" class="form-control" placeholder="Nome">
+          <input type="text" name="email" id="email" class="form-control" placeholder="Email">
+          <div class="pull-right">
+            <input type="submit" value="Enviar" id="submit" class="button">
+          </div>
+        </form>
+      </div>
+
+
+
+
+      <div class="widget">
+        <h4 class="title">
+                        <span>Catégorias</span>
+                    </h4>
+        <ul class="categories">
+          <li><a href="#">Logo Design</a></li>
+          <li><a href="l#">Web Design</a></li>
+          <li><a href="#">WordPress</a></li>
+          <li><a href="#">HTML5 & CSS3</a></li>
+          <li><a href="#">Other Works</a></li>
+        </ul>
+      </div>
+
+      <div class="widget">
+        <h4 class="title">
+                        <span>Páginas</span>
+                    </h4>
+        <ul class="pages">
+          <li><a href="#">Homepage</a></li>
+          <li><a href="#">About us</a></li>
+          <li><a href="#">Portfolio</a></li>
+          <li><a href="#">Shopping</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="widget">
+        <h4 class="title">
+                        <span>Tags</span>
+                    </h4>
+
+        <div class="tagcloud">
+          <a href="#" class="" title="12 topics">Sucesso</a>
+          <a href="#" class="" title="2 topics">Ganhar</a>
+          <a href="#" class="" title="21 topics">Cursos</a>
+          <a href="#" class="" title="5 topics">Você que Faz</a>
+          <a href="#" class="" title="62 topics">Positovo</a>
+          <a href="#" class="" title="12 topics">Produtividade</a>
+          <a href="#" class="" title="88 topics">Buscar</a>
+          <a href="#" class="" title="15 topics">Criatividade</a>
+          <a href="#" class="" title="31 topics">Vontade</a>
+          <a href="#" class="" title="16 topics">Luta</a>
+          <a href="#" class="" title="32 topics">Treinamentos</a>
+          <a href="#" class="" title="12 topics">Dinheiro</a>
+          <a href="#" class="" title="44 topics">Pessoal</a>
+        </div>
+      </div>
+
+    </div>
+    <!-- end sidebar -->
+  </div>
+  <!-- end container -->
+</section>
+<!-- end section -->
+

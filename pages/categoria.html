@@ -1,0 +1,93 @@
+
+	    <script src="site/js/jquery.api.js"></script>
+    <script type="text/javascript">
+    
+	$(function(){
+ 
+    $("#btn").click(function(){
+ 
+        var a = $("input[name=nmcategoria]").val();
+        var b = $("input[name=descricao]").val();
+ 
+        $.ajax({
+             
+            type: "POST",
+            data: { categoria:a, descricao:b },
+             
+            url: "class/cadcategoria.class.php",
+            dataType: "html",
+            success: function(result){
+                $("#ok").html('');
+                $("#ok").append(result);
+            },
+            beforeSend: function(){
+                $('#loading').css({display:"block"});
+            },
+            complete: function(msg){
+                $('#loading').css({display:"none"});
+            }
+        });
+         
+    });
+    });
+    
+    </script>
+	
+  <section class="post-wrapper-top">
+    <div class="container">
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+        <h2>Cadastro de novo produto</h2>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+        <!-- search -->
+        <div class="search-bar">
+          <form action="" method="get">
+            <fieldset>
+              <input type="image" src="img/pixel.gif" class="searchsubmit" alt="" />
+              <input type="text" class="search_text showtextback" name="s" id="s" value="Search..." />
+            </fieldset>
+          </form>
+        </div>
+        <!-- / end div .search-bar -->
+      </div>
+    </div>
+  </section>
+  <!-- end post-wrapper-top -->
+
+  <section class="section1">
+    <div class="container clearfix">
+
+      <div class="content col-lg-12 col-md-12 col-sm-12 col-xs-12 clearfix">
+
+
+        <h5 class="title">INFORMAÇÕES DE CATEGORIA</h5>
+
+        <form id="personalinfo" action="" name="personalinfo" method="post">
+          <label for="email">Nome Categoria <span class="required">*</span></label>
+          <input type="text" name="nmcategoria" id="nmcategoria" class="form-control" maxlength="60" >
+          <label for="fname">Descrição </label>
+          <input type="text" name="descricao" id="descricao" class="form-control" maxlength="250">
+				
+		<br>
+		<center><div id="loading" style="display: none;"><img src="loading.gif"></div> <div id="ok"></div></center>
+		
+
+	  <div class="box-footer">
+        <button type="button" class="btn btn-primary" id="btn"><i class="fa fa-check"></i> Salvar</button>
+		<a href="?pagina=listcategoria"><button type="button" class="btn btn-default"><i class="fa fa-table"></i> Listar</button></a>
+       <button type="reset" class="btn btn-default pull-right "><i class="fa fa-ban"></i> Cancelar</button>
+     </div><!-- /.box-footer -->		  
+		  
+
+	 </form>
+
+
+      </div>
+      <!-- end content -->
+
+
+    </div>
+    <!-- end container -->
+  </section>
+  <!-- end section -->

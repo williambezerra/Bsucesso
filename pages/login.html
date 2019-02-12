@@ -1,0 +1,111 @@
+	    <script src="site/js/jquery.api.js"></script>
+    <script type="text/javascript">
+    
+	$(function(){
+ 
+    $("#btn").click(function(){
+ 
+        var a = $("input[name=user]").val();
+        var b = $("input[name=password]").val();
+ 
+        $.ajax({
+             
+            type: "POST",
+            data: { login:a, senha:b },
+             
+            url: "class/validaLogin.class.php",
+            dataType: "html",
+            success: function(result){
+                $("#ok").html('');
+                $("#ok").append(result);
+            },
+            beforeSend: function(){
+                $('#loading').css({display:"block"});
+            },
+            complete: function(msg){
+                $('#loading').css({display:"none"});
+            }
+        });
+         
+    });
+    });
+    
+    </script>
+
+  <section class="post-wrapper-top">
+    <div class="container">
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+        <ul class="breadcrumb">
+          <li><a href="index.html">Home</a></li>
+          <li>Login</li>
+        </ul>
+        <h2>LOGIN</h2>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+        <!-- search -->
+        <div class="search-bar">
+          <form action="" method="get">
+            <fieldset>
+              <input type="image" src="img/pixel.gif" class="searchsubmit" alt="" />
+              <input type="text" class="search_text showtextback" name="s" id="s" value="Buscar..." />
+            </fieldset>
+          </form>
+        </div>
+        <!-- / end div .search-bar -->
+      </div>
+    </div>
+  </section>
+  <!-- end post-wrapper-top -->
+
+  <section class="section1">
+    <div class="container clearfix">
+      <div class="content col-lg-12 col-md-12 col-sm-12 clearfix">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <h4 class="title">
+                    	<span>Bem Vindo!</span>
+                    </h4>
+         <!-- <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry"s standard dummy text ever since the 1500s.</p>
+          <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+          <p class="withpadding">Still not registered? <a href="#">Click Here</a> to register now.</p> -->
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <h4 class="title">
+                    	<span>Dados de Login</span>
+                    </h4>
+          <form method="post" >
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                <input type="text" class="form-control" name="user" >
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                <input type="password" class="form-control" name="password">
+              </div>
+            </div>
+            <div class="form-group">
+
+			  
+			 <p><center><div id="loading" style="display: none;"><img src="loading.gif"></div> <div id="ok"></div></center>
+			  
+            </div>
+            <div class="form-group">
+
+              <input type="button" value="ACESSAR" id="btn" class="button" > 
+			 
+
+            </div>
+          </form>
+		  
+
+		
+        </div>
+        <!-- end login -->
+      </div>
+      <!-- end content -->
+    </div>
+    <!-- end container -->
+  </section>
+  <!-- end section -->

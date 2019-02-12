@@ -1,0 +1,84 @@
+
+
+	
+  <section class="post-wrapper-top">
+    <div class="container">
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+        <h2>Novo Artigo</h2>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+        <!-- search -->
+        <div class="search-bar">
+          <form action="" method="get">
+            <fieldset>
+              <input type="image" src="img/pixel.gif" class="searchsubmit" alt="" />
+              <input type="text" class="search_text showtextback" name="s" id="s" value="Search..." />
+            </fieldset>
+          </form>
+        </div>
+        <!-- / end div .search-bar -->
+      </div>
+    </div>
+  </section>
+  <!-- end post-wrapper-top -->
+
+  <section class="section1">
+    <div class="container clearfix">
+
+      <div class="content col-lg-12 col-md-12 col-sm-12 col-xs-12 clearfix">
+
+
+        <h5 class="title">INOFORMAÇÕES DO ARTIGO</h5>
+
+       <form method="POST" action="class/cadBlog.class.php" enctype="multipart/form-data">
+	      <label for="email">Data Publicação <span class="required">*</span></label>
+          <input type="date" name="data" id="data" class="form-control"  >
+          <label for="email">Título <span class="required">*</span></label>
+          <input type="text" name="titulo" id="titulo" class="form-control" maxlength="200" >
+
+
+
+        <div class="clearfix"></div>
+
+		
+        <h5 class="title">CONTEÚDO</h5>
+
+   
+
+		  
+					<div class="box-body pad">
+                
+				<textarea class="textarea"  style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" name="artigo" >
+				</textarea>
+				 
+					</div>		
+					
+  
+
+		
+        <h5 class="title">LINKS</h5>
+		
+          <label for="email">Link Imgem 1° <span class="required">*</span></label>
+          <input type="file" name="img1" id="img1" class="form-control" >
+          <label for="lname">Link de Venda </label>
+          <input type="text" name="venda" id="venda" class="form-control" >
+				
+		<br>
+
+	  <div class="box-footer">
+        <button type="submit" class="btn btn-primary" id="btn"><i class="fa fa-check"></i> Salvar</button>
+		<a href="?pagina=listCatMaterial"><button type="button" class="btn btn-default"><i class="fa fa-table"></i> Listar</button></a>
+       <button type="reset" class="btn btn-default pull-right "><i class="fa fa-ban"></i> Cancelar</button>
+     </div><!-- /.box-footer -->
+
+        </form>
+
+      </div>
+      <!-- end content -->
+
+
+    </div>
+    <!-- end container -->
+  </section>
+  <!-- end section -->
