@@ -178,13 +178,13 @@
 <!-- ************************* FIM DA PAGINA QUE SE MODIFICA  ******************************* -->
   
   <footer class="footer">
-    <div class="container">
+   <!-- <div class="container">
       <div class="widget col-lg-3 col-md-3 col-sm-12">
         <h4 class="title">About us</h4>
         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry"s standard dummy text ever since the 1500s..</p>
         <a class="button small" href="#">read more</a>
       </div>
-      <!-- end widget -->
+      <!-- end widget --
       <div class="widget col-lg-3 col-md-3 col-sm-12">
         <h4 class="title">Recent Posts</h4>
         <ul class="recent_posts">
@@ -199,9 +199,9 @@
             <a class="readmore" href="#">read more</a>
           </li>
         </ul>
-        <!-- recent posts -->
+        <!-- recent posts --
       </div>
-      <!-- end widget -->
+      <!-- end widget --
       <div class="widget col-lg-3 col-md-3 col-sm-12">
         <h4 class="title">Get In Touch</h4>
         <ul class="contact_details">
@@ -210,9 +210,9 @@
           <li><i class="fa fa-home"></i> Some Fine Address, 887, Madrid, Spain.</li>
           <li><a href="#"><i class="fa fa-map-marker"></i> View large map</a></li>
         </ul>
-        <!-- contact_details -->
+        <!-- contact_details --
       </div>
-      <!-- end widget -->
+      <!-- end widget --
       <div class="widget col-lg-3 col-md-3 col-sm-12">
         <h4 class="title">Flickr Stream</h4>
         <ul class="flickr">
@@ -226,14 +226,14 @@
           <li><a href="#"><img alt="" src="img/flickr_08.jpg"></a></li>
         </ul>
       </div>
-      <!-- end widget -->
-    </div>
+      <!-- end widget --
+    </div> -->
     <!-- end container -->
 
     <div class="copyrights">
       <div class="container">
         <div class="col-lg-6 col-md-6 col-sm-12 columns footer-left">
-          <p>Copyright © 2014 - All rights reserved.</p>
+          <p>Copyright © 2019 - Todos os direitos reservados.</p>
           <div class="credits">
             <!--
               You are NOT allowed to delete the credit link to TemplateMag with free version.
