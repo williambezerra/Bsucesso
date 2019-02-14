@@ -115,6 +115,14 @@ if( isset( $_GET['logout'] ) ){
                   </ul>
                 </li>				
 
+                <li><a href="#">Posts</a>
+                  <ul class="dropdown">
+                    <li><a href="?pagina=">Novo Posts</a></li>
+                    <li><a href="?pagina=">Listagem</a></li>
+
+                  </ul>
+                </li>				
+				
                 <li><a href="#">Blog</a>
                   <ul class="dropdown">
                     <li><a href="?pagina=cadartigoblog">Novo Artigo</a></li>

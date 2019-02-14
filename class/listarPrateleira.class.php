@@ -16,7 +16,7 @@
 	if($categoria != 0){
 	
 		$query		= mysqli_query( $conn,"select idproduto, nmproduto, sobre, idioma, formaacesso, formato, emailsuporte, 
-									linkimagem1, linkimagem2, linkvideo, linkvenda, nmcategoria, usuario
+									linkimagem1, linkimagem2, linkvideo, linkvenda, destaque, nmcategoria, usuario
 									from produto
 									inner join categoria as cat on cat.idcategoria = produto.fkcategoria
 									inner join login on login.idlogin = produto.fklogin
@@ -38,7 +38,8 @@
 				$result	= mysqli_fetch_array($query);
 				
 				$conteudo = substr($result["sobre"], 0, 15);  
-					
+				
+	
 				$html = '
 				
 						<div class="col-sm-8 col-md-3">

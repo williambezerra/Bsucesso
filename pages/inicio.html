@@ -165,7 +165,8 @@
 										linkimagem1, linkimagem2, linkvideo, linkvenda, nmcategoria, usuario
 										from produto
 										inner join categoria as cat on cat.idcategoria = produto.fkcategoria
-										inner join login on login.idlogin = produto.fklogin  ") or die (mysqli_error ($conn));
+										inner join login on login.idlogin = produto.fklogin 
+										where destaque=1 order by fkcategoria") or die (mysqli_error ($conn));
 				
 				
 				
@@ -353,7 +354,7 @@
     </div>
 	
 	
-	<a class="button large" href="home3.html#">VER TODOS</a>
+	<a class="button large" href="?pagina=prateleira">VER TODOS</a>
 	<p>
 	
 	<!--

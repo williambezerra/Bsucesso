@@ -96,18 +96,12 @@
               <ul id="jetmenu" class="jetmenu blue">
                 <li class="active"><a href="?pagina=inicio">Home</a>
                 </li>
-                <li><a href="#">Prateleira</a>
+                <li><a href="?pagina=prateleira">Prateleira</a>
                   <ul class="dropdown">
-                    <li><a href="?pagina=prateleira">A/Z</a></li>
-                    <li><a href="single-portfolio-1.html">Single Portfolio 1</a></li>
-                    <li><a href="single-portfolio-2.html">Single Portfolio 2</a></li>
-                    <li><a href="portfolio-2.html">Portfolio (2 Columns)</a></li>
-                    <li><a href="portfolio-3.html">Portfolio (3 Columns)</a></li>
-                    <li><a href="gallery-portfolio.html">Gallery</a></li>
-                    <li><a href="masonry-grid-portfolio.html">Masonry Grid Style</a></li>
+
                   </ul>
                 </li>				
-                <li><a href="?pagina=sobre">Posts</a>
+                <li><a href="?pagina=posts">Posts</a>
                 </li>               
 				<li><a href="?pagina=sobre">Sobre</a>
                 </li>  

@@ -20,7 +20,7 @@ function listar($limit){
 	include ("mysql.class.php");
 
 	$query		= mysqli_query( $conn,"select idproduto, nmproduto, sobre, idioma, formaacesso, formato, emailsuporte, 
-								linkimagem1, linkimagem2, linkvideo, linkvenda, nmcategoria, usuario
+								linkimagem1, linkimagem2, linkvideo, linkvenda, destaque, nmcategoria, usuario
 								from produto
 								inner join categoria as cat on cat.idcategoria = produto.fkcategoria
 								inner join login on login.idlogin = produto.fklogin LIMIT 0 , $limit") or die (mysqli_error ($conn));
@@ -29,12 +29,22 @@ function listar($limit){
 		
 		$result	= mysqli_fetch_array($query);
 		
+		
+					switch($result["destaque"]){
+					case 1: $destaque ="SIM";
+					break;
+					case 2:$destaque ="NÃO";
+					break;
+					default: $destaque="INVAL";
+				}
+					
 		$html = '
 						<tr>
                         <td>'.$result["idproduto"].'</td>
                         <td >'.$result["nmcategoria"].'</td>
                         <td >'.$result["nmproduto"].'</td>
                         <td >'.$result["emailsuporte"].'</td>
+                        <td >'.$destaque.'</td>
 						<td width="20%" align="center"> <img  src="img/produto/'.$result["linkimagem1"].'" width="25%" >  </td>						
 
 						<td width="8%">					
