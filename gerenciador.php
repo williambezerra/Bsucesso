@@ -117,8 +117,8 @@ if( isset( $_GET['logout'] ) ){
 
                 <li><a href="#">Posts</a>
                   <ul class="dropdown">
-                    <li><a href="?pagina=">Novo Posts</a></li>
-                    <li><a href="?pagina=">Listagem</a></li>
+                    <li><a href="?pagina=cadposts">Novo Posts</a></li>
+                    <li><a href="?pagina=listposts">Listagem</a></li>
 
                   </ul>
                 </li>				

@@ -1,0 +1,102 @@
+ <!--
+	<script src="site/js/jquery.api.js"></script>
+    <script type="text/javascript">
+    
+	$(function(){
+ 
+    $("#btn").click(function(){
+ 
+        var a = $("input[name=nmproduto]").val();
+        var b = $("input[name=idioma]").val();
+        var c = $("input[name=facesso]").val();
+        var d = $("input[name=formato]").val();
+        var e = $("input[name=emailsuporte]").val();
+        var f = $("textarea[name=sobrep]").val();
+        var g = $("input[name=img1]").val();
+        var h = $("input[name=img2]").val();
+        var i = $("input[name=video]").val();
+        var j = $("input[name=venda]").val();
+        var k = $("select[name=categoria]").val();
+ 
+        $.ajax({
+             
+            type: "POST",
+            data: { nmproduto:a, idioma:b, facesso:c, formato:d, emailsuporte:e, sobrep:f, 
+					img1:g, img2:h, video:i, venda:j, categoria:k  },
+             
+            url: "class/cadProduto.class.php",
+            dataType: "html",
+            success: function(result){
+                $("#ok").html('');
+                $("#ok").append(result);
+            },
+            beforeSend: function(){
+                $('#loading').css({display:"block"});
+            },
+            complete: function(msg){
+                $('#loading').css({display:"none"});
+            }
+        });
+         
+    });
+    });
+    
+    </script> -->
+	
+<!-- EDITOR DE TEXTO -->
+    <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+	<script type="text/javascript" >tinymce.init({ selector:'textarea' });</script>	
+	
+	
+  <section class="post-wrapper-top">
+    <div class="container">
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+        <h2>Cadastro de novo Posts</h2>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+        <!-- search -->
+        <div class="search-bar">
+
+        </div>
+        <!-- / end div .search-bar -->
+      </div>
+    </div>
+  </section>
+  <!-- end post-wrapper-top -->
+
+  <section class="section1">
+    <div class="container clearfix">
+
+      <div class="content col-lg-12 col-md-12 col-sm-12 col-xs-12 clearfix">
+
+
+        <h5 class="title">INOFORMAÇÕES DO POSTS</h5>
+
+        <form  method="post" action="class/cadProduto.class.php" enctype="multipart/form-data">
+
+
+		
+          <label for="email">Link Imgem 1° <span class="required">*</span></label>
+          <input type="file" name="img1" id="img1" class="form-control"  >
+		  		  
+				
+		<br>
+		<center><div id="loading" style="display: none;"><img src="loading.gif"></div> <div id="ok"></div></center>
+		
+	  <div class="box-footer">
+        <button type="submit" class="btn btn-primary" id="btn"><i class="fa fa-check"></i> Salvar</button>
+		<a href="?pagina=listCatMaterial"><button type="button" class="btn btn-default"><i class="fa fa-table"></i> Listar</button></a>
+       <button type="reset" class="btn btn-default pull-right "><i class="fa fa-ban"></i> Cancelar</button>
+     </div><!-- /.box-footer -->
+	 
+        </form>
+
+      </div>
+      <!-- end content -->
+
+
+    </div>
+    <!-- end container -->
+  </section>
+  <!-- end section -->
