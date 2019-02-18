@@ -73,9 +73,28 @@
 
         <h5 class="title">INOFORMAÇÕES DO POSTS</h5>
 
-        <form  method="post" action="class/cadProduto.class.php" enctype="multipart/form-data">
+        <form  method="post" action="class/cadPosts.class.php" enctype="multipart/form-data">
 
 
+		          <label for="email">Categoria Produto <span class="required">*</span></label>
+          <select class="form-control" name="categoria">
+					<option value="">SELECIONE ...</option>
+						<?PHP
+							include_once "class/mysql.class.php";
+
+							$busca		= mysqli_query($conn,"SELECT  idcategoria, nmcategoria, descategoria 
+														FROM categoria	 ") or die(mysqli_error($conn));
+
+							for( $i = 0; mysqli_num_rows($busca) > $i; $i++ ){
+									
+								$retorno	=  mysqli_fetch_array ($busca);
+									
+							echo "<option value='".$retorno['idcategoria']."'>".$retorno['idcategoria']." - ".$retorno['nmcategoria']."</option> ";
+									
+								}
+						?>
+
+				</select>
 		
           <label for="email">Link Imgem 1° <span class="required">*</span></label>
           <input type="file" name="img1" id="img1" class="form-control"  >
@@ -86,7 +105,7 @@
 		
 	  <div class="box-footer">
         <button type="submit" class="btn btn-primary" id="btn"><i class="fa fa-check"></i> Salvar</button>
-		<a href="?pagina=listCatMaterial"><button type="button" class="btn btn-default"><i class="fa fa-table"></i> Listar</button></a>
+		<a href="?pagina=listPosts"><button type="button" class="btn btn-default"><i class="fa fa-table"></i> Listar</button></a>
        <button type="reset" class="btn btn-default pull-right "><i class="fa fa-ban"></i> Cancelar</button>
      </div><!-- /.box-footer -->
 	 

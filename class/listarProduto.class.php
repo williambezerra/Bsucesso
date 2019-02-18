@@ -1,6 +1,3 @@
-﻿
-
-
     <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
 	<script type="text/javascript" >tinymce.init({ selector:'textarea' });</script>
 
@@ -11,14 +8,10 @@
 	@ TODOS OS DIREITOS RESERVADOS
 	@ CRÉDITOS :WILLIAM BEZERRA
 	@ CONTATO - WILLIAMBEZERRADESOUSA@GMAIL.COM
-
 */
-
 if(!isset($_SESSION)){session_start();}
-
 function listar($limit){	
 	include ("mysql.class.php");
-
 	$query		= mysqli_query( $conn,"select idproduto, nmproduto, sobre, idioma, formaacesso, formato, emailsuporte, 
 								linkimagem1, linkimagem2, linkvideo, linkvenda, destaque, nmcategoria, usuario
 								from produto
@@ -46,7 +39,6 @@ function listar($limit){
                         <td >'.$result["emailsuporte"].'</td>
                         <td >'.$destaque.'</td>
 						<td width="20%" align="center"> <img  src="img/produto/'.$result["linkimagem1"].'" width="25%" >  </td>						
-
 						<td width="8%">					
 				
 				<button type="button" class="btn btn-xs btn-warning" data-toggle="modal"
@@ -57,7 +49,6 @@ function listar($limit){
 				data-target="#excluirModal'.$result["idproduto"].'" ><i class="fa fa-trash" title="EXCLUIR"></i></button>
 			</td>
                          </tr>     
-
 						 
 					  <!-- MODAL EDITAR -->
 			  
@@ -76,7 +67,6 @@ function listar($limit){
 					<label for="recipient-name" class="control-label">Nome(*)</label>
 					<input type="text" class="form-control" id="nmproduto" name="nmproduto" value="'.$result["nmproduto"].'">
 				  </div>
-
 				  
 					<div class="form-group">
                 
@@ -98,7 +88,6 @@ function listar($limit){
 					<input type="text" class="form-control" id="facesso" name="facesso" value="'.$result["formaacesso"].'"  maxlength="80" >
 				  </div>
 				  
-
 				  <div class="col-sm-6">
 					<label for="recipient-name" class="control-label">Formato</label>
 					<input type="text" class="form-control" id="formato" name="formato" value="'.$result["formato"].'" maxlength="80">
@@ -108,23 +97,19 @@ function listar($limit){
 					<label for="recipient-name" class="control-label">Email Suporte</label>
 					<input type="text" class="form-control" id="emailsuporte" name="emailsuporte" value="'.$result["emailsuporte"].'" maxlength="80">
 				  </div>				  
-
 				  <div class="col-sm-6">
 					<label for="recipient-name" class="control-label">Link Imagem 1</label>
 										
 					<input type="file" class="form-control" id="img1" name="img1" >
 				  </div>					  
-
 				  <div class="col-sm-6">
 					<label for="recipient-name" class="control-label">Link Imagem 2</label>
 					<input type="file" class="form-control" id="linkimagem2" name="linkimagem2" value="'.$result["linkimagem2"].'" disabled>
 				  </div>				  
-
 				  <div class="col-sm-6">
 					<label for="recipient-name" class="control-label">Link Video</label>
 					<input type="text" class="form-control" id="video" name="video" value="'.$result["linkvideo"].'">
 				  </div>					  
-
 				  <div class="col-sm-6">
 					<label for="recipient-name" class="control-label">Link Venda</label>
 					<input type="text" class="form-control" id="venda" name="venda" value="'.$result["linkvenda"].'">
@@ -190,5 +175,4 @@ function listar($limit){
 	
 	
 }
-
 ?>

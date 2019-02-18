@@ -21,15 +21,10 @@ $categoria 		= $_POST['categoria'];
 
 
 
-
-
-
-
  
  //verifico o preenchimento
 if( empty( $img1) || empty($categoria))
 {
-		
 		msg("Preencha os campos obrigatorios(*)");
 		/*echo "<div class='alert alert-danger alert-dismissable'>
                     <button type='reset' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
@@ -40,13 +35,11 @@ if( empty( $img1) || empty($categoria))
 
 else{
  
-
-
 			//VERFICAÇÃO PARA O UPLOAD DE IMAGEM
 			$arquivo 	= $_FILES['img1']['name'];
 			
 			//Pasta onde o arquivo vai ser salvo
-			$_UP['pasta'] = '../img/produto/';
+			$_UP['pasta'] = '../img/posts/';
 			
 			//Tamanho máximo do arquivo em Bytes
 			$_UP['tamanho'] = 1024*1024*100; //5mb
@@ -113,10 +106,8 @@ else{
 					//Upload efetuado com sucesso, exibe a mensagem
 					
 					
-					mysqli_query($conn,"insert into produto(nmproduto, sobre, idioma, formaacesso, formato, emailsuporte, linkimagem1,
-							linkvideo, linkvenda, fkcategoria, fklogin)
-					values ('$nmproduto', '$sobrep', '$idioma', '$facesso', '$formato', '$emailsuporte',
-								'$nome_final', '$video', '$venda', '$categoria', '$fklogin' )")  or die(mysqli_error($conn));
+					mysqli_query($conn,"insert into posts(linkimage, fkcategoria)
+					values ('$nome_final', '$categoria' )")  or die(mysqli_error($conn));
 		 
 						msg("Cadastro realizado com sucesso.");		
 						

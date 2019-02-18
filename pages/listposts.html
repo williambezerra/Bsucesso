@@ -1,0 +1,103 @@
+
+
+<section class="post-wrapper-top">
+    <div class="container">
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+        <h2>Listagem de Produtos</h2>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+        <!-- search -->
+        <div class="search-bar">
+
+        </div>
+        <!-- / end div .search-bar -->
+      </div>
+    </div>
+  </section>
+  <!-- end post-wrapper-top -->
+
+  <section class="section1">
+    <div class="container clearfix">
+
+      <div class="content col-lg-12 col-md-12 col-sm-12 col-xs-12 clearfix">
+
+	  <!-- CONTEUDOS  -->
+	  
+
+		
+				  <div class="box box-info">
+
+
+		<div style="overflow: auto; ">		   
+                  <table id="example1" class="table table-bordered table-hover">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Categoria</th>
+						<th></th>
+						<th>Ação</th>
+              
+                      </tr>
+                    </thead>
+					 <tbody align="left">
+                      
+					<div id="cont">
+						<?PHP
+
+						include "class/listarPosts.class.php";
+
+						$limit		= @$_GET["mostrar"];
+
+						if( !isset( $limit ) ){
+							
+							$limit = 10;
+							
+						}else{
+							
+							$limit = $_GET["mostrar"];	
+							
+						}
+
+						$num	= $limit+10;
+
+						listar($limit);
+
+						?>
+                 </div>
+				
+				  </tbody>	
+                  </table>
+			</div>	  
+                </div><!-- /.box-body -->
+			   
+			   
+
+
+                <form class="form-horizontal" action="relatorio/relalistCategoriaMat.class.php" method="POST" >
+                  <div class="box-footer">
+                    <a href="?pagina=cadposts"><button type="button" class="btn btn-primary " id="btn"><i class="fa fa-plus"></i> Novo</button></a>
+                   <!-- <a href="?pagina=relfilialm"><button type="button" class="btn btn-default pull-right"><i class="fa fa-print"></i> Imprimir</button></a> -->
+				   <button  type="submit" value="Imprimir" class="btn btn-default pull-right"><i class="fa fa-print"></i> Imprimir</button>
+					
+					</div><!-- /.box-footer -->
+                </form>
+				
+				
+    </div>
+		
+		
+		
+		
+		
+      </div>
+      <!-- end content -->
+
+
+   
+    <!-- end container -->
+  </section>
+  <!-- end section -->
+ 
+
+

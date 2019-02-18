@@ -51,7 +51,7 @@
 					
 							<div class="caption">
 								<h5>'.$result["nmproduto"].'</h5>
-								Catégoria:'.$result["nmcategoria"].'<br>
+								'.$result["nmcategoria"].'<br>
 
 							</div>
 						 </div>

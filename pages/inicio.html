@@ -188,7 +188,7 @@
 						
 								<div class="caption">
 									<h5>'.$result["nmproduto"].'</h5>
-									Catégoria:'.$result["nmcategoria"].'<br>
+									'.$result["nmcategoria"].'<br>
 
 								</div>
 							 </div>
@@ -357,20 +357,19 @@
 	<a class="button large" href="?pagina=prateleira">VER TODOS</a>
 	<p>
 	
-	<!--
+
 	
 	<h3>Melhores Posts</h3>
     <div class="portfolio-wrapper">
       <div id="owl-demo" class="owl-carousel">
 	    
-	  				<ph
-					
+						<?php
 				
-				$query		= mysqli_query( $conn,"select idproduto, nmproduto, sobre, idioma, formaacesso, formato, emailsuporte, 
-										linkimagem1, linkimagem2, linkvideo, linkvenda, nmcategoria, usuario
-										from produto
-										inner join categoria as cat on cat.idcategoria = produto.fkcategoria
-										inner join login on login.idlogin = produto.fklogin  ") or die (mysqli_error ($conn));
+				
+				$query		= mysqli_query( $conn,"select idposts,linkimage, nmcategoria
+								from posts
+								inner join categoria as cat on cat.idcategoria = posts.fkcategoria
+									order by idposts desc") or die (mysqli_error ($conn));
 				
 				
 				
@@ -378,84 +377,32 @@
 				for( $i = 0; mysqli_num_rows( $query ) > $i ; $i++ ){
 					
 					$result	= mysqli_fetch_array($query);
-					
-					$conteudo = substr($result["sobre"], 0, 15);  
-						
+											
 					$html = '
-					
-					
-					
+																			
 					 <div class="item" >
-					  <a data-rel="prettyPhoto" href="img/produto/maxresdefault (2).jpg">
-										<img class="lazyOwl" src="img/produto/maxresdefault (2).jpg" data-src="img/produto/maxresdefault (2).jpg" alt="">
-										<div>
-											<small>DESENVOLVIMENTO PESSSOAL</small>
-											<span>AQUAMAM</span>
-											<i class="fa fa-search"></i>
-										</div>
-									</a>
-					</div>
-		  
+					  <a data-rel="prettyPhoto" href="img/posts/'.$result["linkimage"].'">
+						<img class="lazyOwl" src="img/posts/'.$result["linkimage"].'" data-src="img/posts/'.$result["linkimage"].'" alt="">
+							<div>
+								<small>'.$result["nmcategoria"].'</small>
+									<span>#</span>
+									<i class="fa fa-search"></i>
+							</div>
+					  </a>
+					</div>	
+					
 					';
 					
 					echo $html;
-					
-				}
-				
+				}	
 				
 				?>
-	  
-	  
-	  
-       <div class="item" >
-          <a data-rel="prettyPhoto" href="img/produto/maxresdefault (2).jpg">
-                        	<img class="lazyOwl" src="img/produto/maxresdefault (2).jpg" data-src="img/produto/maxresdefault (2).jpg" alt="">
-                        	<div>
-                                <small>DESENVOLVIMENTO PESSSOAL</small>
-                                <span>AQUAMAM</span>
-                                <i class="fa fa-search"></i>
-                            </div>
-                        </a>
-        </div>	   
-		   <div class="item" >
-          <a data-rel="prettyPhoto" href="img/produto/maxresdefault (2).jpg">
-                        	<img class="lazyOwl" src="img/produto/maxresdefault (2).jpg" data-src="img/produto/maxresdefault (2).jpg" alt="">
-                        	<div>
-                                <small>DESENVOLVIMENTO PESSSOAL</small>
-                                <span>AQUAMAM</span>
-                                <i class="fa fa-search"></i>
-                            </div>
-                        </a>
-        </div>	
-		   <div class="item" >
-          <a data-rel="prettyPhoto" href="img/produto/maxresdefault (2).jpg">
-                        	<img class="lazyOwl" src="img/produto/maxresdefault (2).jpg" data-src="img/produto/maxresdefault (2).jpg" alt="">
-                        	<div>
-                                <small>DESENVOLVIMENTO PESSSOAL</small>
-                                <span>AQUAMAM</span>
-                                <i class="fa fa-search"></i>
-                            </div>
-                        </a>
-        </div>	
-		   <div class="item" >
-          <a data-rel="prettyPhoto" href="img/produto/maxresdefault (2).jpg">
-                        	<img class="lazyOwl" src="img/produto/maxresdefault (2).jpg" data-src="img/produto/maxresdefault (2).jpg" alt="">
-                        	<div>
-                                <small>DESENVOLVIMENTO PESSSOAL</small>
-                                <span>AQUAMAM</span>
-                                <i class="fa fa-search"></i>
-                            </div>
-                        </a>
-        </div>	
-		
-	
-
 
       </div>
-      <!-- end owl-demo --
+      <!-- end owl-demo -->
     </div>
-    <!-- end portfolio-wrapper --
-    <a class="button large" href="home3.html#">VER TODOS</a>
+    <!-- end portfolio-wrapper -->
+    <a class="button large" href="?pagina=posts">VER TODOS</a>
   </section>
   <!-- end section1 -->
 
