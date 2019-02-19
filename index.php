@@ -60,7 +60,6 @@
         <div class="social_buttons">
           <a href="#" data-toggle="tooltip" data-placement="bottom" title="Instagra"><i class="fa fa-instagram"></i></a>
           <a href="#" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i class="fa fa-facebook"></i></a>
-          <a href="#" data-toggle="tooltip" data-placement="bottom" title="Twitter"><i class="fa fa-twitter"></i></a>
           <a href="?pagina=login" data-toggle="tooltip" data-placement="bottom" title="Gerenciador"><i class="fa fa-cogs"></i></a>
         </div>
       </div>
@@ -102,26 +101,16 @@
                   </ul>
                 </li>				
                 <li><a href="?pagina=posts">Posts</a>
-                </li>               
-				<li><a href="?pagina=sobre">Sobre</a>
-                </li>  
-                <li><a href="#">Shop</a>
+                </li>                
+                <li><a href="#">Loja</a>
                   <ul class="dropdown">
-                    <li><a href="digital-download.html">Products Page</a></li>
-                    <li><a href="single-product.html">Single Product</a></li>
-                    <li><a href="checkout.html">Checkout</a></li>
-                    <li><a href="account.html">Account Page</a></li>
-                    <li><a href="support.html">Support Center</a></li>
                   </ul>
                 </li>
 
                 <li><a href="?pagina=inicialBlog">Blog</a>
-                  <ul class="dropdown">
-                    <li><a href="?pagina=artigo">Artigo</a></li>
-                    <li><a href="blog-right-sidebar.html">Blog Right Sidebar</a></li>
-                    <li><a href="single-with-sidebar.html">Single with Sidebar</a></li>
-                  </ul>
                 </li>
+				<li><a href="?pagina=sobre">Sobre</a>
+                </li> 				
               </ul>
             </div>
           </div>
@@ -235,18 +224,20 @@
               Buy the pro version with working PHP/AJAX contact form: https://templatemag.com/maxibiz-bootstrap-business-template/
               Licensing information: https://templatemag.com/license/
             -->
-            Created with MaxiBiz template by <a href="https://templatemag.com/">TemplateMag</a>
+            
           </div>
         </div>
         <!-- end widget -->
         <div class="col-lg-6 col-md-6 col-sm-12 columns text-right">
           <div class="footer-menu right">
             <ul class="menu">
-              <li><a href="index.html">Home</a></li>
-              <li><a href="about.html">About</a></li>
-              <li><a href="#">Sitemap</a></li>
-              <li><a href="#">Site Terms</a></li>
-              <li><a href="contact">Contact</a></li>
+              <li><a href="?pagina=inicio">Home</a></li>
+              <li><a href="?pagina=prateleira">Prateleira</a></li>
+              <li><a href="?pagina=posts">Posts</a></li>
+              <li><a href="#">Loja</a></li>
+
+              <li><a href="?pagina=inicialBlog">Blog</a></li>
+			  <li><a href="?pagina=sobre">Sobre</a></li>
             </ul>
           </div>
         </div>

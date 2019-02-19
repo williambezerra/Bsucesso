@@ -26,6 +26,10 @@ $img1 			= $_FILES['img1']['name'];
 $video 			= $_POST['video'];
 $venda 			= $_POST['venda'];
 $categoria 		= $_POST['categoria'];
+
+
+$destaque 		= $_POST['destaque'];
+$avaliacao 		= $_POST['avaliacao'];
 $fklogin = 	$_SESSION['idusuario'];
 	
 
