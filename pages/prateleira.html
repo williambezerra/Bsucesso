@@ -96,7 +96,7 @@
 				<?php
 				
 				$query		= mysqli_query( $conn,"select idproduto, nmproduto, sobre, idioma, formaacesso, formato, emailsuporte, 
-										linkimagem1, linkimagem2, linkvideo, linkvenda, nmcategoria, usuario
+										linkimagem1, linkimagem2, linkvideo, linkvenda, destaque, avaliacaoB, nmcategoria, usuario
 										from produto
 										inner join categoria as cat on cat.idcategoria = produto.fkcategoria
 										inner join login on login.idlogin = produto.fklogin  ") or die (mysqli_error ($conn));
@@ -276,9 +276,9 @@
 							<div class="col-lg-12 col-md-12 col-sm-12 first">
 							  <div class="testimonial">
 								<img class="alignleft img-circle" src="img/LOGO2.fw.png" alt="">
-								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen
-								  book.</p>
-								<p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+									
+									'.$result["avaliacaoB"].'
+									
 								<div class="testimonial-meta">
 								  <h4>Biblioteca de Sucesso <small><a href="#">Feadback</a></small></h4>
 								</div>

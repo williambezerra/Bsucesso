@@ -45,7 +45,7 @@ $emailsuporte  = mb_strtoupper($emailsuporte);
  
  //verifico o preenchimento
 if( empty( $nmproduto) || empty( $idioma) || empty( $facesso) || empty( $formato) || empty( $emailsuporte) || empty( $sobrep)
-		|| empty( $img1) || empty( $venda) || empty($categoria))
+		|| empty( $img1) || empty( $venda) || empty($destaque) || empty($categoria))
 {
 		
 		msg("Preencha os campos obrigatorios(*)");
@@ -153,9 +153,9 @@ else{
 					
 					
 				mysqli_query($conn,"insert into produto(nmproduto, sobre, idioma, formaacesso, formato, emailsuporte, linkimagem1,
-						linkvideo, linkvenda, fkcategoria, fklogin)
+						linkvideo, linkvenda, destaque, avaliacaoB, fkcategoria, fklogin)
 				values ('$nmproduto', '$sobrep', '$idioma', '$facesso', '$formato', '$emailsuporte',
-							'$nome_final', '$video', '$venda', '$categoria', '$fklogin' )")  or die(mysqli_error($conn));
+							'$nome_final', '$video', '$venda','$destaque', '$avaliacao' ,'$categoria', '$fklogin' )")  or die(mysqli_error($conn));
 	 
 					msg("Cadastro realizado com sucesso.");		
 					
