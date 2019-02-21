@@ -16,7 +16,7 @@
 	if($categoria != 0){
 	
 		$query		= mysqli_query( $conn,"select idproduto, nmproduto, sobre, idioma, formaacesso, formato, emailsuporte, 
-									linkimagem1, linkimagem2, linkvideo, linkvenda, destaque, nmcategoria, usuario
+									linkimagem1, linkimagem2, linkvideo, linkvenda, destaque, avaliacaoB ,nmcategoria, usuario
 									from produto
 									inner join categoria as cat on cat.idcategoria = produto.fkcategoria
 									inner join login on login.idlogin = produto.fklogin
@@ -59,142 +59,176 @@
 						
 
 
-	  <!-- MODAL EDITAR -->
-				  
-			<div class="modal fade" id="exampleModal'.$result["idproduto"].'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-			  <div class="modal-dialog modal-lg" role="document">
-				<div class="modal-content">
-				  <div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					<h4 class="modal-title" id="exampleModalLabel">Prévia do(a): <B>'.$result["nmproduto"].'</B> </h4>
-					
-				  </div>
-				<div class="modal-body">
-					<form method="POST" enctype="multipart/form-data">
-				
-				
-	<!-- IMAGEM DO PRODUTO -->
-
-			<img class="aligncenter" width="90%" height="90%" src="img/produto/'.$result["linkimagem1"].'" alt="">
-
-	<!-- ************* -->
-						
-	<section class="marketplace-top">
-	  
-		  <div class="content col-lg-12 col-md-12 col-sm-12 clearfix " >
-			<h2>'.$result["nmproduto"].' <a href="'.$result["linkvenda"].'" target="_blank"> <button type="button" class="btn btn-warning  pull-right" id="button"><i class="fa fa-file"> </i> Acessar página do Treinametno</button></a></h2> 
-			<p align="justify"> 
-			
-				'.$result["sobre"].'
-
-			</p>
-				
-		<a href="'.$result["linkvenda"].'"  target="_blank"> <center> <button type="button" class="btn btn-success btn-lg" id="btn"><i class="fa fa-check"> </i> Quero o Treinametno</button> </center> </a>				
-					
-		  </div>
-		  <!-- end content -->
-	  </section>
-	  <!-- end section -->	
-		
-			
-
-
-			<div class="video-responsive">
-				<iframe src="https://www.youtube.com/embed/'.$result["linkvideo"].'" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-			</div>
-			
-
-		
-		
-				<a href="'.$result["linkvenda"].'"  target="_blank"> <center> <button type="button" class="btn btn-danger btn-lg" id="btn"><i class="fa fa-database"> </i> MAIS INOFORMAÇÕES DO CURSO</button> </center> </a>
-				
-					<P>
-					<P>
-					
-			<div class="theme_overviews clearfix">
-			   
-			   <div class="col-lg-4 col-md-4 col-sm-12">
-				<div class="services">
-				  <div class="icon-container">
-					<i class="fa fa-language"></i>
-				  </div>
-				  <header>
-					<h3>Idioma</h3>
-				  </header>
-				  '.$result["idioma"].'
-				</div>
-			  </div>	
-
-			  <div class="col-lg-4 col-md-4 col-sm-12">
-				<div class="services">
-				  <div class="icon-container">
-					<i class="fa fa-desktop"></i>
-				  </div>
-				  <header>
-					<h3>Forma de Acesso</h3>
-				  </header>
-				  '.$result["formaacesso"].'
-				</div>
-			  </div>
-			  
-			  <div class="col-lg-4 col-md-4 col-sm-12">
-				<div class="services">
-				  <div class="icon-container">
-					<i class="fa fa-folder"></i>
-				  </div>
-				  <header>
-					<h3>Formato</h3>
-				  </header>
-						'.$result["formato"].'
-				</div>
-			  </div>		  
-
-			  <div class="col-lg-4 col-md-4 col-sm-12">
-				<div class="services">
-				  <div class="icon-container">
-					<i class="fa fa-envelope"></i>
-				  </div>
-				  <header>
-					<h3>E-mail Suporte</h3>
-				  </header>
-						'.$result["emailsuporte"].'
-				</div>
-			  </div>
-			  
-			  <div class="col-lg-4 col-md-4 col-sm-12">
-				<div class="services">
-				  <div class="icon-container">
-					<i class="fa fa-key"></i>
-				  </div>
-				  <header>
-					<h3>Segurança</h3>
-				  </header>
-						Agrantida pela plataforma de vendas
-				</div>
-				</div>		  
-
-			  <div class="col-lg-4 col-md-4 col-sm-12">
-				<div class="services">
-				  <div class="icon-container">
-					<i class="fa fa-dollar "></i>
-				  </div>
-				  <header>
-					<h3>Pagamento</h3>
-				  </header>
-						Cartão de credito, Boleto
-				</div>
-			  </div>				
-				
-			  </div>
+	    <!-- MODAL EDITAR -->
 					  
+				<div class="modal fade" id="exampleModal'.$result["idproduto"].'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+				  <div class="modal-dialog modal-lg" role="document">
+					<div class="modal-content">
+					  <div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="exampleModalLabel">Prévia: <B>'.$result["nmproduto"].'</B> </h4>
+						
+					  </div>
+					<div class="modal-body">
+						<form method="POST" enctype="multipart/form-data">
+					
+					
+		<!-- IMAGEM DO PRODUTO -->
 
-					</form>
-				</div>
-				  
-				</div>
+				<img class="aligncenter" width="90%" height="90%" src="img/produto/'.$result["linkimagem1"].'" alt="">
+
+		<!-- ************* -->
+							
+		<section class="marketplace-top">
+		  
+			  <div class="content col-lg-12 col-md-12 col-sm-12 clearfix " >
+				<h2>'.$result["nmproduto"].' <a href="'.$result["linkvenda"].'" target="_blank"> <button type="button" class="btn btn-warning  pull-right" id="button"><i class="fa fa-file"> </i> Acessar página do Treinametno</button></a></h2> 
+				<p align="justify"> 
+				
+					'.$result["sobre"].'
+
+				</p>
+					
+			<a href="'.$result["linkvenda"].'"  target="_blank"> <center> <button type="button" class="btn btn-success btn-lg" id="btn"><i class="fa fa-check"> </i> Quero o Treinametno</button> </center> </a>				
+						
 			  </div>
-			</div>  
-				<!-- FIM DO MODAL EDITAR --> 					
+			  <!-- end content -->
+		  </section>
+		  <!-- end section -->	
+			
+				
+
+
+				<div class="video-responsive">
+					<iframe src="https://www.youtube.com/embed/'.$result["linkvideo"].'" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+				</div>
+				
+
+			
+			
+					<a href="'.$result["linkvenda"].'"  target="_blank"> <center> <button type="button" class="btn btn-danger btn-lg" id="btn"><i class="fa fa-database"> </i> MAIS INOFORMAÇÕES DO CURSO</button> </center> </a>
+					
+						<P>
+						<P>
+						
+				<div class="theme_overviews clearfix">
+				   
+				   <div class="col-lg-4 col-md-4 col-sm-12">
+					<div class="services">
+					  <div class="icon-container">
+						<i class="fa fa-language"></i>
+					  </div>
+					  <header>
+						<h3>Idioma</h3>
+					  </header>
+					  '.$result["idioma"].'
+					</div>
+				  </div>	
+
+				  <div class="col-lg-4 col-md-4 col-sm-12">
+					<div class="services">
+					  <div class="icon-container">
+						<i class="fa fa-desktop"></i>
+					  </div>
+					  <header>
+						<h3>Forma de Acesso</h3>
+					  </header>
+					  '.$result["formaacesso"].'
+					</div>
+				  </div>
+				  
+				  <div class="col-lg-4 col-md-4 col-sm-12">
+					<div class="services">
+					  <div class="icon-container">
+						<i class="fa fa-folder"></i>
+					  </div>
+					  <header>
+						<h3>Formato</h3>
+					  </header>
+							'.$result["formato"].'
+					</div>
+				  </div>		  
+
+				  <div class="col-lg-4 col-md-4 col-sm-12">
+					<div class="services">
+					  <div class="icon-container">
+						<i class="fa fa-envelope"></i>
+					  </div>
+					  <header>
+						<h3>E-mail Suporte</h3>
+					  </header>
+							'.$result["emailsuporte"].'
+					</div>
+				  </div>
+				  
+				  <div class="col-lg-4 col-md-4 col-sm-12">
+					<div class="services">
+					  <div class="icon-container">
+						<i class="fa fa-key"></i>
+					  </div>
+					  <header>
+						<h3>Segurança</h3>
+					  </header>
+							Agrantida pela plataforma de vendas
+					</div>
+					</div>		  
+
+				  <div class="col-lg-4 col-md-4 col-sm-12">
+					<div class="services">
+					  <div class="icon-container">
+						<i class="fa fa-dollar "></i>
+					  </div>
+					  <header>
+						<h3>Pagamento</h3>
+					  </header>
+							Cartão de credito, Boleto
+					</div>
+				  </div>				
+					
+				  </div>
+						  
+
+						</form>
+					</div>
+					  
+					</div>
+				  </div>
+						   
+				  	<section class="section1">
+						<div class="container clearfix">
+						  <div class="content col-lg-12 col-md-12 col-sm-12 clearfix">
+
+							<div class="general-title text-center">
+							  <h3> Avaliação Bsucesso <i class="fa fa-trophy "></i></h3>
+							  <hr>
+							</div>
+
+							<div class="col-lg-12 col-md-12 col-sm-12 first">
+							  <div class="testimonial">
+								<img class="alignleft img-circle" src="img/LOGO2.fw.png" alt="">
+									
+									'.$result["avaliacaoB"].'
+									
+								<div class="testimonial-meta">
+								  <h4>Biblioteca de Sucesso <small><a href="#">Feadback</a></small></h4>
+								</div>
+							  </div>
+							  <!-- end dmbox -->
+							</div>
+
+
+						  </div>
+						  <!-- end content -->
+						</div>
+						<!-- end container -->
+					  </section>
+					  <!-- end section -->
+					  <!-- end section -->
+				  
+				  
+				  
+				</div>  
+					<!-- FIM DO MODAL EDITAR --> 					
 								 
 				';
 				
