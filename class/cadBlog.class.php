@@ -259,12 +259,31 @@ $query		= mysqli_query( $conn,"SELECT idblog, dtpublica, titulo, conteudo, linck
 											<h4 class="title">Deixe seu comentário</h4>
 											<form id="comments_form" action="" name="comments_form" class="row" method="post">
 											  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-												<input type="text" name="name" id="name" class="form-control" placeholder="Name">
+												<input type="text" name="nome" id="nome" class="form-control" placeholder="Nome">
 												<input type="text" name="email" id="email" class="form-control" placeholder="Email">
-												<input type="text" name="website" id="website" class="form-control" placeholder="Website">
-												<textarea class="form-control" name="comments" id="comments" rows="6" placeholder="Your Message ..."></textarea>
-												<input type="submit" value="ENVIAR" id="submit" class="button small">
+												
+												<select class="form-control" name="categoria">
+												<option value="">SELECIONE ...</option>
+													<?PHP
+														include_once "class/mysql.class.php";
+
+														$busca		= mysqli_query($conn,"SELECT  idcategoria, nmcategoria, descategoria 
+																					FROM categoria	 ") or die(mysqli_error($conn));
+
+														for( $i = 0; mysqli_num_rows($busca) > $i; $i++ ){
+																
+															$retorno	=  mysqli_fetch_array ($busca);
+																
+														echo "<option value="'.$retorno['idcategoria'].'">'.$retorno['nmcategoria'].'</option> ";
+																
+															}
+													?>
+
+												</select>
+												<textarea class="form-control" name="mensagem" id="comments" rows="6" placeholder="Sua mensagem ..."></textarea>
+												<button  type="button" value="ENVIAR"  id="btn" class="button small">Enviar</button>
 											  </div>
+											  		<center><div id="loading" style="display: none;"><img src="loading.gif"></div> <div id="ok"></div></center>
 											</form>
 										  </div>
 										  <!-- end comments_Form -->
@@ -282,7 +301,7 @@ $query		= mysqli_query( $conn,"SELECT idblog, dtpublica, titulo, conteudo, linck
 														<span>Inscreva-se</span>
 													</h4>
 										<form id="subscribe" action="mc.php" name="subscribe" method="post">
-										  <input type="text" name="name" id="name" class="form-control" placeholder="Nome">
+										  <input type="text" name="name" id="name" class="form-control" placeholder="No	me">
 										  <input type="text" name="email" id="email" class="form-control" placeholder="Email">
 										  <div class="pull-right">
 											<input type="submit" value="Enviar" id="submit" class="button">
