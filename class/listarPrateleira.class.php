@@ -205,7 +205,7 @@
 
 							<div class="col-lg-12 col-md-12 col-sm-12 first">
 							  <div class="testimonial">
-								<img class="alignleft img-circle" src="img/LOGO2.fw.png" alt="">
+								<img class="alignleft img-circle" src="img/Bsucesso.fw.png" alt="">
 									
 									'.$result["avaliacaoB"].'
 									
