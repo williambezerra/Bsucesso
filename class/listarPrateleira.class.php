@@ -12,22 +12,49 @@
 
 	
 	$categoria	= setPost("categoria");
+	$busca	= setPost("busca");
+	$query  = "";
 	
-	if($categoria != 0){
+	if($categoria != 0 && $busca!= "") {
 	
 		$query		= mysqli_query( $conn,"select idproduto, nmproduto, sobre, idioma, formaacesso, formato, emailsuporte, 
 									linkimagem1, linkimagem2, linkvideo, linkvenda, destaque, avaliacaoB ,nmcategoria, usuario
 									from produto
 									inner join categoria as cat on cat.idcategoria = produto.fkcategoria
 									inner join login on login.idlogin = produto.fklogin
-									where idcategoria='$categoria'		") or die (mysqli_error ($conn));
+									where idcategoria='$categoria'and nmproduto LIKE '%$busca%'		") or die (mysqli_error ($conn));
 									
-		if(mysqli_num_rows( $query ) == 0){
+	}
+	elseif($categoria !=0 && $busca==""){
+		$query		= mysqli_query( $conn,"select idproduto, nmproduto, sobre, idioma, formaacesso, formato, emailsuporte, 
+									linkimagem1, linkimagem2, linkvideo, linkvenda, destaque, avaliacaoB ,nmcategoria, usuario
+									from produto
+									inner join categoria as cat on cat.idcategoria = produto.fkcategoria
+									inner join login on login.idlogin = produto.fklogin
+									where idcategoria='$categoria'	") or die (mysqli_error ($conn));		
+		
+	}	
+	
+	elseif($categoria ==0 && $busca!=""){
+		
+		$query		= mysqli_query( $conn,"select idproduto, nmproduto, sobre, idioma, formaacesso, formato, emailsuporte, 
+									linkimagem1, linkimagem2, linkvideo, linkvenda, destaque, avaliacaoB ,nmcategoria, usuario
+									from produto
+									inner join categoria as cat on cat.idcategoria = produto.fkcategoria
+									inner join login on login.idlogin = produto.fklogin
+									where nmproduto LIKE '%$busca%'		") or die (mysqli_error ($conn));	
+		
+	}
+	
+	
+	
+	
+		if( empty($query)){
 		
 		echo " <center><div class='alert alert-warning alert-dismissable'>
                  <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
                    <h4><i class='icon fa fa-ban'></i> Atenção</h4>
-                   Ainda não temos produtos nessa catégoria!
+                   Não temos crusos com essa especificação!
                </div></center>";
 		
 		}
@@ -50,8 +77,8 @@
 								<img src="img/produto/'.$result["linkimagem1"].'"  alt="Park">
 					
 							<div class="caption">
-								<h5>'.$result["nmproduto"].'</h5>
-								'.$result["nmcategoria"].'<br>
+								<h5><b>'.$result["nmproduto"].'</b></h5>
+								<font size="2">'.$result["nmcategoria"].'</font><br>
 
 							</div>
 						 </div>
@@ -82,7 +109,7 @@
 		<section class="marketplace-top">
 		  
 			  <div class="content col-lg-12 col-md-12 col-sm-12 clearfix " >
-				<h2>'.$result["nmproduto"].' <a href="'.$result["linkvenda"].'" target="_blank"> <button type="button" class="btn btn-warning  pull-right" id="button"><i class="fa fa-file"> </i> Acessar página do Treinametno</button></a></h2> 
+				<h2>'.$result["nmproduto"].' <a href="'.$result["linkvenda"].'" target="_blank"> <button type="button" class="btn btn-success  pull-right" id="button"><i class="fa fa-file"></i> Acessar página do Treinametno</button></a></h2> 
 				<p align="justify"> 
 				
 					'.$result["sobre"].'
@@ -235,28 +262,7 @@
 				echo $html;
 				
 			}
-		}							
-	}
-	else{
-		
-		
-				echo " <center><div class='alert alert-warning alert-dismissable'>
-                 <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
-                   <h4><i class='icon fa fa-ban'></i> Atenção</h4>
-                   Selecione uma Catégoria!
-               </div></center>";
-		
-		//SQL PARA CONSULTAR TODAS AS CATEGORIAS
-			/*$query		= mysqli_query( $conn,"select idproduto, nmproduto, sobre, idioma, formaacesso, formato, emailsuporte, 
-								linkimagem1, linkimagem2, linkvideo, linkvenda, nmcategoria, usuario
-								from produto
-								inner join categoria as cat on cat.idcategoria = produto.fkcategoria
-								inner join login on login.idlogin = produto.fklogin  ") or die (mysqli_error ($conn)); */
-		
-	}
-	
-	
-	
+		}								
 	
 
 

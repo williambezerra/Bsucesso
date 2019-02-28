@@ -260,26 +260,9 @@ $query		= mysqli_query( $conn,"SELECT idblog, dtpublica, titulo, conteudo, linck
 											<form id="comments_form" action="" name="comments_form" class="row" method="post">
 											  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 												<input type="text" name="nome" id="nome" class="form-control" placeholder="Nome">
-												<input type="text" name="email" id="email" class="form-control" placeholder="Email">
+												<input type="text" name="email" id="email" class="form-control" placeholder="E-mail">
+												<input type="text" name="assunto" id="assunto" class="form-control" placeholder="Assunto">
 												
-												<select class="form-control" name="categoria">
-												<option value="">SELECIONE ...</option>
-													<?PHP
-														include_once "class/mysql.class.php";
-
-														$busca		= mysqli_query($conn,"SELECT  idcategoria, nmcategoria, descategoria 
-																					FROM categoria	 ") or die(mysqli_error($conn));
-
-														for( $i = 0; mysqli_num_rows($busca) > $i; $i++ ){
-																
-															$retorno	=  mysqli_fetch_array ($busca);
-																
-														echo "<option value="'.$retorno['idcategoria'].'">'.$retorno['nmcategoria'].'</option> ";
-																
-															}
-													?>
-
-												</select>
 												<textarea class="form-control" name="mensagem" id="comments" rows="6" placeholder="Sua mensagem ..."></textarea>
 												<button  type="button" value="ENVIAR"  id="btn" class="button small">Enviar</button>
 											  </div>
