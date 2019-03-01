@@ -204,7 +204,7 @@ $query		= mysqli_query( $conn,"SELECT idblog, dtpublica, titulo, conteudo, linck
 											<div class="post-meta">
 											  <p>
 												Publicado em: <span class="publish-on">'.$Rdata.'</span>
-												<span class="sep">/</span> Comentários: <a href="#"> 4 Opniões</a>
+										
 											  </p>
 											</div>
 										  </header>
@@ -227,32 +227,36 @@ $query		= mysqli_query( $conn,"SELECT idblog, dtpublica, titulo, conteudo, linck
 										</div>
 										<!-- end author_box -->
 										<div id="comments_wrapper">
-										  <h4 class="title">2 Comentários</h4>
+										  <h4 class="title">Comentários</h4>
 										  <ul class="comment-list">
 											<?php
 											include_once "class/mysql.class.php";
 
-										$busca		= mysqli_query($conn,"SELECT  idcomentarios,nome, email, conteudo,data 
+										$busca		= mysqli_query($conn,"SELECT  idcomentarios,nome, email, comentarios.conteudo,data 
 																	FROM comentarios 
-																	 order by idcomentarios desc ") or die(mysqli_error($conn));
+																	  inner join blog on blog.idblog = comentarios.fkartigo
+																	 where comentarios.fkartigo='.$Ridblog.'
+                                                                     order by idcomentarios desc ") or die(mysqli_error($conn));
 
 										for( $i = 0; mysqli_num_rows($busca) > $i; $i++ ){
 												
 											$retorno	=  mysqli_fetch_array ($busca);
 												$data = date("d/m/Y", strtotime($retorno["data"]));
-										$coments ='.' 									
+										
+										
+										$coments ="									
 											<li>
-											  <article class="comment">
-												<img src="img/fun2.png" alt="avatar" class="comment-avatar">
-												<div class="comment-content">
-												  <h4 class="comment-author">
-																		".$retorno["nome"]." <small class="comment-meta">'.$data.'</small>
-																		<span class="comment-reply"><a href="#" class="comment-reply button small">Subir</a></span>
-																	</h4> ".$retorno["conteudo"]."									</div>
+											  <article class=comment>
+												<img src=img/fun2.png alt=avatar class=comment-avatar>
+												<div class=comment-content>
+												  <h4 class=comment-author>
+												  {$retorno["nome"]} <small class=comment-meta>{$data}</small>
+																		
+																	</h4> {$retorno["conteudo"]}									</div>
 											  </article>
 											  <!-- End .comment -->
 											</li>													
-										'.';
+										";
 										echo $coments;		
 											}	  
 										  
@@ -287,8 +291,8 @@ $query		= mysqli_query( $conn,"SELECT idblog, dtpublica, titulo, conteudo, linck
 										<h4 class="title">
 														<span>Inscreva-se</span>
 													</h4>
-										<form id="subscribe" action="mc.php" name="subscribe" method="post">
-										  <input type="text" name="name" id="name" class="form-control" placeholder="No	me">
+										<form id="subscribe" action="class.php" name="subscribe" method="post">
+										  <input type="text" name="name" id="name" class="form-control" placeholder="Nome">
 										  <input type="text" name="email" id="email" class="form-control" placeholder="Email">
 										  <div class="pull-right">
 											<input type="submit" value="Enviar" id="submit" class="button">

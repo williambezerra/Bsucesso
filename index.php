@@ -78,7 +78,7 @@
 			
 			<!--BIBLIOTECA DE <span>SUCESSO</span> -->
 			
-		 <img alt="" src="img/nmlogo.fw.png" width="50%" align="height">  
+		 <img alt="" src="img/Bsucesso2.png" width="50%" align="height">  
 				<br>
 				
             </a>
@@ -107,7 +107,7 @@
                   </ul>
                 </li>
 
-                <li><a href="?pagina=inicialBlog">Blog</a>
+                <li><a href="?pagina=listartigos">Blog</a>
                 </li>
 				<li><a href="?pagina=sobre">Sobre</a>
                 </li> 				
@@ -236,7 +236,7 @@
               <li><a href="?pagina=posts">Posts</a></li>
               <li><a href="#">Loja</a></li>
 
-              <li><a href="?pagina=inicialBlog">Blog</a></li>
+              <li><a href="?pagina=listartigos">Blog</a></li>
 			  <li><a href="?pagina=sobre">Sobre</a></li>
             </ul>
           </div>

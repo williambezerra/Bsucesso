@@ -25,6 +25,8 @@ $img1 			= $_FILES['img1']['name'];
 //$img2			= $_FILES['img2']['name'];
 $video 			= $_POST['video'];
 $venda 			= $_POST['venda'];
+$pagProd 			= $_POST['pagProd'];
+$valor 			= $_POST['valor'];
 $categoria 		= $_POST['categoria'];
 
 
@@ -153,9 +155,9 @@ else{
 					
 					
 				mysqli_query($conn,"insert into produto(nmproduto, sobre, idioma, formaacesso, formato, emailsuporte, linkimagem1,
-						linkvideo, linkvenda, destaque, avaliacaoB, fkcategoria, fklogin)
+						linkvideo, linkvenda, linkpgproduto, valor, destaque, avaliacaoB, fkcategoria, fklogin)
 				values ('$nmproduto', '$sobrep', '$idioma', '$facesso', '$formato', '$emailsuporte',
-							'$nome_final', '$video', '$venda','$destaque', '$avaliacao' ,'$categoria', '$fklogin' )")  or die(mysqli_error($conn));
+							'$nome_final', '$video', '$venda', '$pagProd','$valor', '$destaque', '$avaliacao' ,'$categoria', '$fklogin' )")  or die(mysqli_error($conn));
 	 
 					msg("Cadastro realizado com sucesso.");		
 					

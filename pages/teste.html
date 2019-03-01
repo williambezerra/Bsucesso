@@ -1,7 +1,7 @@
 <section class="post-wrapper-top">
 									<div class="container">
 									  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-										<h2>Nova logo - Biblioteca de Sucesso</h2>
+										<h2>teste</h2>
 									  </div>
 									</div>
 								  </section>
@@ -15,7 +15,7 @@
 											<div id="myCarousel" class="carousel slide">
 											  <div class="carousel-inner">
 												<div class="item active">
-												  <img src="img/blog/Bsucesso.fw.png" alt="">
+												  <img src="img/blog/1489782435350selo.jpg" alt="">
 												</div>
 												<!-- end item -->
 												<div class="item">
@@ -34,17 +34,24 @@
 											<!-- end carousel -->
 										  </div>
 										  <header class="page-header blog-title">
-											<h3 class="general-title">Nova logo - Biblioteca de Sucesso</h3>
+											<h3 class="general-title">teste</h3>
 											<div class="post-meta">
 											  <p>
-												Publicado em: <span class="publish-on">28/02/2019</span>
+												Publicado em: <span class="publish-on">01/03/2019</span>
 												<span class="sep">/</span> Comentários: <a href="#"> 4 Opniões</a>
 											  </p>
 											</div>
 										  </header>
 										  <div class="post-desc">
 											<p>
-												<p style="text-align: justify;"><span style="color: #333333; font-family: opensans-regular; font-size: 20px; letter-spacing: -0.5px; background-color: #fcfcfc;">Depois de passar algum sufoco, o Botafogo conseguiu resistir e ainda saiu de campo com uma vit&oacute;ria por 3 a 0 sobre o Cuiab&aacute;, nesta quarta-feira, no Est&aacute;dio Nilton Santos. Com dois gols de Erik e um de Pimp&atilde;o, a torcida at&eacute; gritou "ol&eacute;" no fim, e o time garantiu a classifica&ccedil;&atilde;o para a terceira fase da Copa do Brasil e agora espera o vencedor do confronto entre Juventude e Am&eacute;rica-MG para saber o seu pr&oacute;ximo advers&aacute;rio na competi&ccedil;&atilde;o.</span></p>
+												<div class="mc-column content-text active-extra-styles active-capital-letter" style="box-sizing: inherit; margin: 0px auto 2rem; padding: 0px 1rem; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; font-size: 1.25rem; line-height: 2rem; font-family: opensans, helvetica, arial, sans-serif; vertical-align: baseline; max-width: 42.5rem; width: 680px; float: none; letter-spacing: -0.03125rem; overflow-wrap: break-word; color: #333333;" data-block-type="unstyled" data-block-weight="38" data-block-id="2">
+<p class="content-text__container theme-color-primary-first-letter" style="box-sizing: inherit; margin: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; border: 0px; font: inherit; vertical-align: baseline;" data-track-category="Link no Texto" data-track-links="">A nova regra para o uso do vale-trasporte na cidade de S&atilde;o Paulo,&nbsp;<a style="box-sizing: inherit; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: bold; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline; text-decoration-line: none; color: #c4170c;" href="https://g1.globo.com/sp/sao-paulo/noticia/2019/02/24/prefeitura-de-sp-deixara-de-emitir-bilhete-unico-sem-identificacao-e-reduz-embarques-com-vale-transporte.ghtml">prevista no decreto assinado pelo prefeito Bruno Covas (PSDB)</a>publicado no &uacute;ltimo s&aacute;bado (23) no Di&aacute;rio Oficial, entrou em vigor &agrave;s 0h desta sexta-feira (1&deg;).</p>
+</div>
+<div class="wall protected-content" style="box-sizing: inherit; margin: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; font-size: 18px; line-height: inherit; font-family: opensans, helvetica, arial, sans-serif; vertical-align: baseline; color: #333333;">
+<div class="mc-column content-text active-extra-styles " style="box-sizing: inherit; margin: 0px auto 2rem; padding-top: 0px; padding-right: 1rem; padding-bottom: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: 1.25rem; line-height: 2rem; vertical-align: baseline; max-width: 42.5rem; width: 680px; float: none; letter-spacing: -0.03125rem; overflow-wrap: break-word;" data-block-type="unstyled" data-block-weight="42" data-block-id="3">
+<p class="content-text__container " style="box-sizing: inherit; margin: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; border: 0px; font: inherit; vertical-align: baseline;" data-track-category="Link no Texto" data-track-links="">Os usu&aacute;rios ter&atilde;o agora tr&ecirc;s horas para fazer at&eacute; dois embarques nos &ocirc;nibus municipais da SPTrans, pagando apenas uma tarifa de R$ 4,30. At&eacute; esta quinta-feira (28), o vale-transporte permitia que o passageiro embarcasse em quatro &ocirc;nibus no per&iacute;odo de duas horas.</p>
+</div>
+</div>
 											</p>
 										  </div>
 										</article>
@@ -60,51 +67,51 @@
 										  </div>
 										</div>
 										<!-- end author_box -->
-
-												
 										<div id="comments_wrapper">
-										  <h4 class="title">2 Comentários</h4>									  
-										  
+										  <h4 class="title">2 Comentários</h4>
 										  <ul class="comment-list">
+											<?php
+											include_once "class/mysql.class.php";
+
+										$busca		= mysqli_query($conn,"SELECT  idcomentarios,nome, email, conteudo,data 
+																	FROM comentarios 
+																	 order by idcomentarios desc ") or die(mysqli_error($conn));
+
+										for( $i = 0; mysqli_num_rows($busca) > $i; $i++ ){
+												
+											$retorno	=  mysqli_fetch_array ($busca);
+												$data = date("d/m/Y", strtotime($retorno["data"]));
+										$coments =' 									
 											<li>
 											  <article class="comment">
-												<img src="img/team_06.png" alt="avatar" class="comment-avatar">
+												<img src="img/fun2.png" alt="avatar" class="comment-avatar">
 												<div class="comment-content">
 												  <h4 class="comment-author">
-																		Mark Spine <small class="comment-meta">January 12, 2014</small>
+																		'.$retorno["nome"].' <small class="comment-meta">2019-03-01</small>
 																		<span class="comment-reply"><a href="#" class="comment-reply button small">Subir</a></span>
-																	</h4> t has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages.
-												</div>
+																	</h4> '.$retorno["conteudo"].'									</div>
 											  </article>
 											  <!-- End .comment -->
-											</li>
-											<li>
-											  <article class="comment">
-												<img src="img/team_01.png" alt="avatar" class="comment-avatar">
-												<div class="comment-content">
-												  <h4 class="comment-author">
-																		Leonard Smith <small class="comment-meta">January 12, 2014</small>
-																		<span class="comment-reply"><a href="#" class="comment-reply button small">Subir</a></span>
-																	</h4> Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia.
-												</div>
-											  </article>
-											  <!-- End .comment -->
-											</li>
+											</li>													
+										';
+										echo $coments;		
+											}	  
+										  
+										  ?>
 										  </ul>
 										  <!-- End .comment-list -->
 										  <div class="clearfix"></div>
 										  <div class="comments_form">
 											<h4 class="title">Deixe seu comentário</h4>
-											<form id="comments_form" action="" name="comments_form" class="row" method="post">
+											<form id="comments_form" action="class/cadComentario.class.php" name="comments_form" class="row" method="post">
 											  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 												<input type="text" name="nome" id="nome" class="form-control" placeholder="Nome">
-												<input type="text" name="email" id="email" class="form-control" placeholder="E-mail">
-												<input type="text" name="assunto" id="assunto" class="form-control" placeholder="Assunto">
-												
-												<textarea class="form-control" name="mensagem" id="comments" rows="6" placeholder="Sua mensagem ..."></textarea>
-												<button  type="button" value="ENVIAR"  id="btn" class="button small">Enviar</button>
+												<input type="text" name="email" id="email" class="form-control" placeholder="E-mail">	
+												<input type="hidden" class="form-control" id="idblog"  name="idblog" value="26">												
+												<textarea class="form-control" name="mensagem" id="mensagem" rows="6" placeholder="Sua mensagem ..."></textarea>
+												<input type="submit" value="ENVIAR"  id="btn" class="button small">
 											  </div>
-											  		<center><div id="loading" style="display: none;"><img src="loading.gif"></div> <div id="ok"></div></center>
+											  		
 											</form>
 										  </div>
 										  <!-- end comments_Form -->
@@ -121,8 +128,8 @@
 										<h4 class="title">
 														<span>Inscreva-se</span>
 													</h4>
-										<form id="subscribe" action="mc.php" name="subscribe" method="post">
-										  <input type="text" name="name" id="name" class="form-control" placeholder="No	me">
+										<form id="subscribe" action="class.php" name="subscribe" method="post">
+										  <input type="text" name="name" id="name" class="form-control" placeholder="Nome">
 										  <input type="text" name="email" id="email" class="form-control" placeholder="Email">
 										  <div class="pull-right">
 											<input type="submit" value="Enviar" id="submit" class="button">
