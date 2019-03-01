@@ -64,7 +64,7 @@ function listar($limit){
             <p>
               Publicado: <span class="publish-on">'.$data.'</span>
           
-              <span class="sep">/</span> Commentarios: <a href="#"> '.$Rcoment["qtdcome"].'</a>
+              <span class="sep">/</span> Comentários: <a href="#"> '.$Rcoment["qtdcome"].'</a>
             </p>
           </div>
 		  		    <a href="?pagina='.$result["titulo"].'"> <button type="submit" class="btn btn-primary" id="btn" >Ler Agora ...</button></a>

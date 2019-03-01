@@ -247,7 +247,7 @@ $query		= mysqli_query( $conn,"SELECT idblog, dtpublica, titulo, conteudo, linck
 										$coments ="									
 											<li>
 											  <article class=comment>
-												<img src=img/fun2.png alt=avatar class=comment-avatar>
+												<img src=img/usuario2.png alt=avatar class=comment-avatar>
 												<div class=comment-content>
 												  <h4 class=comment-author>
 												  {$retorno["nome"]} <small class=comment-meta>{$data}</small>
