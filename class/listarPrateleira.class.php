@@ -103,7 +103,9 @@
 						<div class="modal-content">
 						  <div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-							<h4 class="modal-title" id="exampleModalLabel">Prévia: <B>'.$result["nmproduto"].'</B> </h4>
+							<h4 class="modal-title" id="exampleModalLabel">Prévia: <B>'.$result["nmproduto"].'</B> 
+							<a href="'.$result["linkvenda"].'" target="_blank"> <button type="button" class="btn btn-success  pull-right" id="button"><i class="fa fa-file"></i> Acessar página do Treinametno</button></a>
+							</h4>
 							
 						  </div>
 						<div class="modal-body">
@@ -119,7 +121,8 @@
 			<section class="marketplace-top">
 			  
 				  <div class="content col-lg-12 col-md-12 col-sm-12 clearfix " >
-					<h2>'.$result["nmproduto"].' <a href="'.$result["linkvenda"].'" target="_blank"> <button type="button" class="btn btn-success  pull-right" id="button"><i class="fa fa-file"></i> Acessar página do Treinametno</button></a></h2> 
+					
+					<h2>'.$result["nmproduto"].' </h2> 
 					<p align="justify"> 
 					
 						'.$result["sobre"].'

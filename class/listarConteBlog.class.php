@@ -25,6 +25,12 @@ function listar($limit){
 
 		$data = date('d/m/Y', strtotime($result["dtpublica"]));
 
+		$coment		= mysqli_query( $conn,"SELECT idblog, dtpublica, titulo,  count(comentarios.nome) qtdcome
+										FROM blog
+										inner join login on login.idlogin = blog.fklogin 
+                                        inner join comentarios on comentarios.fkartigo = blog.idblog
+										where idblog='".$result["idblog"]."'") or die (mysqli_error ($conn));
+		$Rcoment	= mysqli_fetch_array($coment);
 		
 		$html = '
 			
@@ -58,7 +64,7 @@ function listar($limit){
             <p>
               Publicado: <span class="publish-on">'.$data.'</span>
           
-              <span class="sep">/</span> Commentarios: <a href="#"> 4 Comments</a>
+              <span class="sep">/</span> Commentarios: <a href="#"> '.$Rcoment["qtdcome"].'</a>
             </p>
           </div>
 		  		    <a href="?pagina='.$result["titulo"].'"> <button type="submit" class="btn btn-primary" id="btn" >Ler Agora ...</button></a>

@@ -154,6 +154,7 @@ $query		= mysqli_query( $conn,"SELECT idblog, dtpublica, titulo, conteudo, linck
 
 		$Rdata = date("d/m/Y", strtotime($result["dtpublica"]));
 		
+		$Ridblog = $result["idblog"];
 		$Rtitulo = $result["titulo"];
 		$Rconteudo = $result["conteudo"];
 		$Rlinckimagem1blog = $result["linckimagem1blog"];
@@ -228,45 +229,48 @@ $query		= mysqli_query( $conn,"SELECT idblog, dtpublica, titulo, conteudo, linck
 										<div id="comments_wrapper">
 										  <h4 class="title">2 Comentários</h4>
 										  <ul class="comment-list">
+											<?php
+											include_once "class/mysql.class.php";
+
+										$busca		= mysqli_query($conn,"SELECT  idcomentarios,nome, email, conteudo,data 
+																	FROM comentarios 
+																	 order by idcomentarios desc ") or die(mysqli_error($conn));
+
+										for( $i = 0; mysqli_num_rows($busca) > $i; $i++ ){
+												
+											$retorno	=  mysqli_fetch_array ($busca);
+												$data = date("d/m/Y", strtotime($retorno["data"]));
+										$coments ='.' 									
 											<li>
 											  <article class="comment">
-												<img src="img/team_06.png" alt="avatar" class="comment-avatar">
+												<img src="img/fun2.png" alt="avatar" class="comment-avatar">
 												<div class="comment-content">
 												  <h4 class="comment-author">
-																		Mark Spine <small class="comment-meta">January 12, 2014</small>
+																		".$retorno["nome"]." <small class="comment-meta">'.$data.'</small>
 																		<span class="comment-reply"><a href="#" class="comment-reply button small">Subir</a></span>
-																	</h4> t has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages.
-												</div>
+																	</h4> ".$retorno["conteudo"]."									</div>
 											  </article>
 											  <!-- End .comment -->
-											</li>
-											<li>
-											  <article class="comment">
-												<img src="img/team_01.png" alt="avatar" class="comment-avatar">
-												<div class="comment-content">
-												  <h4 class="comment-author">
-																		Leonard Smith <small class="comment-meta">January 12, 2014</small>
-																		<span class="comment-reply"><a href="#" class="comment-reply button small">Subir</a></span>
-																	</h4> Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia.
-												</div>
-											  </article>
-											  <!-- End .comment -->
-											</li>
+											</li>													
+										'.';
+										echo $coments;		
+											}	  
+										  
+										  ?>
 										  </ul>
 										  <!-- End .comment-list -->
 										  <div class="clearfix"></div>
 										  <div class="comments_form">
 											<h4 class="title">Deixe seu comentário</h4>
-											<form id="comments_form" action="" name="comments_form" class="row" method="post">
+											<form id="comments_form" action="class/cadComentario.class.php" name="comments_form" class="row" method="post">
 											  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 												<input type="text" name="nome" id="nome" class="form-control" placeholder="Nome">
-												<input type="text" name="email" id="email" class="form-control" placeholder="E-mail">
-												<input type="text" name="assunto" id="assunto" class="form-control" placeholder="Assunto">
-												
-												<textarea class="form-control" name="mensagem" id="comments" rows="6" placeholder="Sua mensagem ..."></textarea>
-												<button  type="button" value="ENVIAR"  id="btn" class="button small">Enviar</button>
+												<input type="text" name="email" id="email" class="form-control" placeholder="E-mail">	
+												<input type="hidden" class="form-control" id="idblog"  name="idblog" value="'.$Ridblog.'">												
+												<textarea class="form-control" name="mensagem" id="mensagem" rows="6" placeholder="Sua mensagem ..."></textarea>
+												<input type="submit" value="ENVIAR"  id="btn" class="button small">
 											  </div>
-											  		<center><div id="loading" style="display: none;"><img src="loading.gif"></div> <div id="ok"></div></center>
+											  		
 											</form>
 										  </div>
 										  <!-- end comments_Form -->
