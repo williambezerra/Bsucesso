@@ -41,12 +41,13 @@ else{
 		// unlink -> função do php para deletar arquivo 
 		$arquivo = "../img/blog/".$verifica ;
 		$arquivoHtml  = "../pages/".$verificahtml.".html";
-		if (!unlink($arquivo) && !unlink($arquivoHtml))
+		if (!unlink($arquivo) )
 		{
 			msg("Exclusão não realizada! Verifique os dados.");	
 		}
 		else
 		{
+			unlink($arquivoHtml);
 			msg("Imagem : $arquivo, deletada com sucesso!");	
 			msg("HTML : $arquivoHtml, deletada com sucesso!");	
 			

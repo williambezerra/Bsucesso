@@ -1,7 +1,7 @@
 <section class="post-wrapper-top">
 									<div class="container">
 									  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-										<h2>ttttttttttttttttttttttttttttttttt</h2>
+										<h2>JUST FEDERAL-</h2>
 									  </div>
 									</div>
 								  </section>
@@ -15,7 +15,7 @@
 											<div id="myCarousel" class="carousel slide">
 											  <div class="carousel-inner">
 												<div class="item active">
-												  <img src="img/blog/images.jpg" alt="">
+												  <img src="img/blog/carnaval-f.png" alt="">
 												</div>
 												<!-- end item -->
 												<div class="item">
@@ -34,25 +34,21 @@
 											<!-- end carousel -->
 										  </div>
 										  <header class="page-header blog-title">
-											<h3 class="general-title">ttttttttttttttttttttttttttttttttt</h3>
+											<h3 class="general-title">JUST FEDERAL-</h3>
 											<div class="post-meta">
 											  <p>
-												Publicado em: <span class="publish-on">01/03/2019</span>
-												<span class="sep">/</span> Comentários: <a href="#"> 4 Opniões</a>
+												Publicado em: <span class="publish-on">06/03/2019</span>
+										
 											  </p>
 											</div>
 										  </header>
 										  <div class="post-desc">
 											<p>
-												<p>gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggffgfgg</p>
-<p>fgfgfgfgfgfg</p>
-<p>gffgfgfgggggggggggggggggggggggggggggggggggggggggggggggggg</p>
-<p>fgfgfgfgfgggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg</p>
-<p>fgggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg</p>
-<p>&nbsp;</p>
-<p>fgggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg</p>
-<p>fgggggggggggggggggggggggggggggggggggggggggggggggggggggg</p>
+												<p style="text-align: justify;">O Fervo da Lud, bloco comandado pela cantora Ludmilla nesta ter&ccedil;a-feira (5) no Centro do Rio, teve 217 foli&otilde;es que precisaram de atendimento m&eacute;dico. Deste total, 29 precisaram ser hospitalizados. O evento precisou ser interrompido ap&oacute;s uma briga generalizada.</p>
+<p style="text-align: justify;">De acordo com a prefeitura, das 29 pessoas que acabaram transferidas para hospitais da rede municipal, nenhum tinha quadro cl&iacute;nico grave. O socorro em hospital foi feito devido &agrave; quantidade de pacientes no local do evento, o que levou os coordenadores dos postos da Secretaria Municipal de Sa&uacute;de optaram pelas remo&ccedil;&otilde;es para liberar leitos nos postos e assim receber outros pacientes.</p>
 											</p>
+					<a href="" target="_blank"> <center> <button type="button" class="btn btn-success btn-lg" id="btn">
+					<i class="fa fa-check"> </i> Treinametno Indicado</button> </center> </a>											
 										  </div>
 										</article>
 										<div class="author_box clearfix">
@@ -68,32 +64,36 @@
 										</div>
 										<!-- end author_box -->
 										<div id="comments_wrapper">
-										  <h4 class="title">2 Comentários</h4>
+										  <h4 class="title">Comentários</h4>
 										  <ul class="comment-list">
 											<?php
 											include_once "class/mysql.class.php";
 
-										$busca		= mysqli_query($conn,"SELECT  idcomentarios,nome, email, conteudo,data 
+										$busca		= mysqli_query($conn,"SELECT  idcomentarios,nome, email, comentarios.conteudo,data 
 																	FROM comentarios 
-																	 order by idcomentarios desc ") or die(mysqli_error($conn));
+																	  inner join blog on blog.idblog = comentarios.fkartigo
+																	 where comentarios.fkartigo=40
+                                                                     order by idcomentarios desc ") or die(mysqli_error($conn));
 
 										for( $i = 0; mysqli_num_rows($busca) > $i; $i++ ){
 												
 											$retorno	=  mysqli_fetch_array ($busca);
 												$data = date("d/m/Y", strtotime($retorno["data"]));
-										$coments = 									
+										
+										
+										$coments ="									
 											<li>
-											  <article class="comment">
-												<img src="img/fun2.png" alt="avatar" class="comment-avatar">
-												<div class="comment-content">
-												  <h4 class="comment-author">
-																		 <small class="comment-meta">2019-03-01</small>
-																		<span class="comment-reply"><a href="#" class="comment-reply button small">Subir</a></span>
-																	</h4> 									</div>
+											  <article class=comment>
+												<img src=img/usudefaut2.png alt=avatar class=comment-avatar>
+												<div class=comment-content>
+												  <h4 class=comment-author>
+												  {$retorno["nome"]} <small class=comment-meta>{$data}</small>
+																		
+																	</h4> {$retorno["conteudo"]}									</div>
 											  </article>
 											  <!-- End .comment -->
 											</li>													
-										;
+										";
 										echo $coments;		
 											}	  
 										  
@@ -107,7 +107,7 @@
 											  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 												<input type="text" name="nome" id="nome" class="form-control" placeholder="Nome">
 												<input type="text" name="email" id="email" class="form-control" placeholder="E-mail">	
-												<input type="hidden" class="form-control" id="idblog"  name="idblog" value="27">												
+												<input type="hidden" class="form-control" id="idblog"  name="idblog" value="40">												
 												<textarea class="form-control" name="mensagem" id="mensagem" rows="6" placeholder="Sua mensagem ..."></textarea>
 												<input type="submit" value="ENVIAR"  id="btn" class="button small">
 											  </div>
@@ -128,8 +128,8 @@
 										<h4 class="title">
 														<span>Inscreva-se</span>
 													</h4>
-										<form id="subscribe" action="mc.php" name="subscribe" method="post">
-										  <input type="text" name="name" id="name" class="form-control" placeholder="No	me">
+										<form id="subscribe" action="class/cadInscricao.class.php" method="post">
+										  <input type="text" name="nome" id="nome" class="form-control" placeholder="Nome">
 										  <input type="text" name="email" id="email" class="form-control" placeholder="Email">
 										  <div class="pull-right">
 											<input type="submit" value="Enviar" id="submit" class="button">
@@ -148,7 +148,7 @@
 										  <a href="#" class="" title="2 topics">Ganhar</a>
 										  <a href="#" class="" title="21 topics">Cursos</a>
 										  <a href="#" class="" title="5 topics">Você que Faz</a>
-										  <a href="#" class="" title="62 topics">Positovo</a>
+										  <a href="#" class="" title="62 topics">Positivo</a>
 										  <a href="#" class="" title="12 topics">Produtividade</a>
 										  <a href="#" class="" title="88 topics">Buscar</a>
 										  <a href="#" class="" title="15 topics">Criatividade</a>
@@ -157,6 +157,9 @@
 										  <a href="#" class="" title="32 topics">Treinamentos</a>
 										  <a href="#" class="" title="12 topics">Dinheiro</a>
 										  <a href="#" class="" title="44 topics">Pessoal</a>
+										  <a href="#" class="" title="44 topics">Biblioteca</a>
+										  <a href="#" class="" title="44 topics">Online</a>
+										  <a href="#" class="" title="44 topics">Web</a>
 										</div>
 									  </div>
 

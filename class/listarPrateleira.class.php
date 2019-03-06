@@ -164,12 +164,12 @@
 								<a class="button btn-block large" href="'.$result["linkvenda"].'" target="_blank"><i class="fa fa-download"></i> Adquirir </a>
 							  </div>
 							  <!-- buttons -->
-							  <hr>
+							<!--  <hr>
 							  <div class="rating text-center">
 							<h2>4 <i class="fa fa-heart"></i></h2>
 								<p>Nota 1/5</p>
 							  </div>
-							  <!-- rating -->
+							  <!-- rating -- -->
 							</div>
 							<!-- theme_details -->
 						  </div>

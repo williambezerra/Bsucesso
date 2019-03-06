@@ -17,7 +17,8 @@ function listar($limit){
 
 	$query		= mysqli_query( $conn,"SELECT idblog, dtpublica, titulo, conteudo, linckimagem1blog, linckvendablog, login.nome ,login.usuario, login.imgusu 
 										FROM blog
-										inner join login on login.idlogin = blog.fklogin ") or die (mysqli_error ($conn));
+										inner join login on login.idlogin = blog.fklogin 
+										ORDER BY idblog desc") or die (mysqli_error ($conn));
 	
 	for( $i = 0; mysqli_num_rows( $query ) > $i ; $i++ ){
 		

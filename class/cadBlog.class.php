@@ -37,16 +37,14 @@ if( empty( $titulo) || empty( $artigo) || empty( $img1) )
 }
 
 else{
- 
- 		$tituloForm = str_replace(' ', '+', $titulo); 
 
 	//VERIFICA A EXISTENCIA DA CATEGORIA PELO NOME 
- 	$recebeartigo = mysqli_query($conn, "SELECT titulo FROM blog WHERE titulo ='".$tituloForm."'")  or die (mysqli_error($conn));
+ 	$recebeartigo = mysqli_query($conn, "SELECT titulo FROM blog WHERE titulo ='".$titulo."'")  or die (mysqli_error($conn));
 	$dbnmartigo =  mysqli_fetch_array($recebeartigo);
 	$verificadado = $dbnmartigo['titulo'];
 
 
-		if($verificadado == $tituloForm){
+		if($verificadado == $titulo){
 		
 		
 				msg("Titulo já utilizado!");
@@ -134,7 +132,7 @@ else{
 					
 					
 				mysqli_query($conn,"insert into blog(dtpublica, titulo, conteudo, linckimagem1blog,linckvendablog, fklogin)
-				values ('$data', '$tituloForm', '$artigo', '$nome_final', '$venda', '$fklogin' )")  or die(mysqli_error($conn));
+				values ('$data', '$titulo', '$artigo', '$nome_final', '$venda', '$fklogin' )")  or die(mysqli_error($conn));
 	 
 				/*  --------------------------  CRIA ARQUIVO HTML    */
 	 	 
@@ -149,7 +147,7 @@ $query		= mysqli_query( $conn,"SELECT idblog, dtpublica, titulo, conteudo, linck
 								login.nome ,login.usuario, login.imgusu 
 								 FROM blog
 									inner join login on login.idlogin = blog.fklogin 
-									WHERE titulo='$tituloForm'")	or die (mysqli_error ($conn));
+									WHERE titulo='$titulo'")	or die (mysqli_error ($conn));
 									
 		$result	= mysqli_fetch_array($query);
 
@@ -201,7 +199,7 @@ $query		= mysqli_query( $conn,"SELECT idblog, dtpublica, titulo, conteudo, linck
 											<!-- end carousel -->
 										  </div>
 										  <header class="page-header blog-title">
-											<h3 class="general-title">'.$Rtitulo.'</h3>
+											<h3 class="general-title">'.$titulo.'</h3>
 											<div class="post-meta">
 											  <p>
 												Publicado em: <span class="publish-on">'.$Rdata.'</span>
@@ -250,7 +248,7 @@ $query		= mysqli_query( $conn,"SELECT idblog, dtpublica, titulo, conteudo, linck
 										$coments ="									
 											<li>
 											  <article class=comment>
-												<img src=img/usuario2.png alt=avatar class=comment-avatar>
+												<img src=img/usudefaut2.png alt=avatar class=comment-avatar>
 												<div class=comment-content>
 												  <h4 class=comment-author>
 												  {$retorno["nome"]} <small class=comment-meta>{$data}</small>
@@ -271,10 +269,10 @@ $query		= mysqli_query( $conn,"SELECT idblog, dtpublica, titulo, conteudo, linck
 											<h4 class="title">Deixe seu comentário</h4>
 											<form id="comments_form" action="class/cadComentario.class.php" name="comments_form" class="row" method="post">
 											  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-												<input type="text" name="nome" id="nome" class="form-control" placeholder="Nome">
-												<input type="text" name="email" id="email" class="form-control" placeholder="E-mail">	
+												<input type="text" name="nome" id="nome" class="form-control" placeholder="Nome" maxlength="80" >
+												<input type="text" name="email" id="email" class="form-control" placeholder="E-mail" maxlength="100">	
 												<input type="hidden" class="form-control" id="idblog"  name="idblog" value="'.$Ridblog.'">												
-												<textarea class="form-control" name="mensagem" id="mensagem" rows="6" placeholder="Sua mensagem ..."></textarea>
+												<textarea class="form-control" name="mensagem" id="mensagem" rows="6" placeholder="Sua mensagem ..." maxlength="200" ></textarea>
 												<input type="submit" value="ENVIAR"  id="btn" class="button small">
 											  </div>
 											  		
