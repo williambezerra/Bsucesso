@@ -17,7 +17,7 @@ function listar($limit){
 
 	$query		= mysqli_query( $conn,"SELECT idblog, dtpublica, titulo, conteudo, linckimagem1blog, linckvendablog, login.nome ,login.usuario, login.imgusu 
 										FROM blog
-										inner join login on login.idlogin = blog.fklogin LIMIT 0 , $limit") or die (mysqli_error ($conn));
+										inner join login on login.idlogin = blog.fklogin ") or die (mysqli_error ($conn));
 	
 	for( $i = 0; mysqli_num_rows( $query ) > $i ; $i++ ){
 		
@@ -122,7 +122,7 @@ function listar($limit){
 				<h4 class="modal-title" id="exampleModalLabel">Confirmar Exclusão? </h4>
 			  </div>
 			<div class="modal-body">
-				<form method="POST" action="class/excluirProduto.class.php" enctype="multipart/form-data">
+				<form method="POST" action="class/excluirArtigo.class.php" enctype="multipart/form-data">
 								
 					<div class="form-group">
 					<label for="recipient-name" class="control-label">Titulo(*)</label>

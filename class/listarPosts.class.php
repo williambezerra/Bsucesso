@@ -93,7 +93,7 @@ function listar($limit){
 				<h4 class="modal-title" id="exampleModalLabel">Confirmar Exclusão? </h4>
 			  </div>
 			<div class="modal-body">
-				<form method="POST" action="class/excluirProduto.class.php" enctype="multipart/form-data">
+				<form method="POST" action="class/excluirPosts.class.php" enctype="multipart/form-data">
 								
 					<div class="form-group">
 					<label for="recipient-name" class="control-label">IdPosts(*)</label>

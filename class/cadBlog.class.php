@@ -38,14 +38,15 @@ if( empty( $titulo) || empty( $artigo) || empty( $img1) )
 
 else{
  
+ 		$tituloForm = str_replace(' ', '+', $titulo); 
 
 	//VERIFICA A EXISTENCIA DA CATEGORIA PELO NOME 
- 	$recebeartigo = mysqli_query($conn, "SELECT titulo FROM blog WHERE titulo ='".$titulo."'")  or die (mysqli_error($conn));
+ 	$recebeartigo = mysqli_query($conn, "SELECT titulo FROM blog WHERE titulo ='".$tituloForm."'")  or die (mysqli_error($conn));
 	$dbnmartigo =  mysqli_fetch_array($recebeartigo);
 	$verificadado = $dbnmartigo['titulo'];
 
 
-		if($verificadado == $titulo){
+		if($verificadado == $tituloForm){
 		
 		
 				msg("Titulo já utilizado!");
@@ -133,7 +134,7 @@ else{
 					
 					
 				mysqli_query($conn,"insert into blog(dtpublica, titulo, conteudo, linckimagem1blog,linckvendablog, fklogin)
-				values ('$data', '$titulo', '$artigo', '$nome_final', '$venda', '$fklogin' )")  or die(mysqli_error($conn));
+				values ('$data', '$tituloForm', '$artigo', '$nome_final', '$venda', '$fklogin' )")  or die(mysqli_error($conn));
 	 
 				/*  --------------------------  CRIA ARQUIVO HTML    */
 	 	 
@@ -148,7 +149,7 @@ $query		= mysqli_query( $conn,"SELECT idblog, dtpublica, titulo, conteudo, linck
 								login.nome ,login.usuario, login.imgusu 
 								 FROM blog
 									inner join login on login.idlogin = blog.fklogin 
-									WHERE titulo='$titulo'")	or die (mysqli_error ($conn));
+									WHERE titulo='$tituloForm'")	or die (mysqli_error ($conn));
 									
 		$result	= mysqli_fetch_array($query);
 
@@ -167,7 +168,7 @@ $query		= mysqli_query( $conn,"SELECT idblog, dtpublica, titulo, conteudo, linck
 	$codigo ='<section class="post-wrapper-top">
 									<div class="container">
 									  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-										<h2>'.$Rtitulo.'</h2>
+										<h2>'.$titulo.'</h2>
 									  </div>
 									</div>
 								  </section>
@@ -212,6 +213,8 @@ $query		= mysqli_query( $conn,"SELECT idblog, dtpublica, titulo, conteudo, linck
 											<p>
 												'.$Rconteudo.'
 											</p>
+					<a href="'.$Rlinckvendablog.'" target="_blank"> <center> <button type="button" class="btn btn-success btn-lg" id="btn">
+					<i class="fa fa-check"> </i> Treinametno Indicado</button> </center> </a>											
 										  </div>
 										</article>
 										<div class="author_box clearfix">
@@ -291,8 +294,8 @@ $query		= mysqli_query( $conn,"SELECT idblog, dtpublica, titulo, conteudo, linck
 										<h4 class="title">
 														<span>Inscreva-se</span>
 													</h4>
-										<form id="subscribe" action="class.php" name="subscribe" method="post">
-										  <input type="text" name="name" id="name" class="form-control" placeholder="Nome">
+										<form id="subscribe" action="class/cadInscricao.class.php" method="post">
+										  <input type="text" name="nome" id="nome" class="form-control" placeholder="Nome">
 										  <input type="text" name="email" id="email" class="form-control" placeholder="Email">
 										  <div class="pull-right">
 											<input type="submit" value="Enviar" id="submit" class="button">
@@ -311,7 +314,7 @@ $query		= mysqli_query( $conn,"SELECT idblog, dtpublica, titulo, conteudo, linck
 										  <a href="#" class="" title="2 topics">Ganhar</a>
 										  <a href="#" class="" title="21 topics">Cursos</a>
 										  <a href="#" class="" title="5 topics">Você que Faz</a>
-										  <a href="#" class="" title="62 topics">Positovo</a>
+										  <a href="#" class="" title="62 topics">Positivo</a>
 										  <a href="#" class="" title="12 topics">Produtividade</a>
 										  <a href="#" class="" title="88 topics">Buscar</a>
 										  <a href="#" class="" title="15 topics">Criatividade</a>
@@ -320,6 +323,9 @@ $query		= mysqli_query( $conn,"SELECT idblog, dtpublica, titulo, conteudo, linck
 										  <a href="#" class="" title="32 topics">Treinamentos</a>
 										  <a href="#" class="" title="12 topics">Dinheiro</a>
 										  <a href="#" class="" title="44 topics">Pessoal</a>
+										  <a href="#" class="" title="44 topics">Biblioteca</a>
+										  <a href="#" class="" title="44 topics">Online</a>
+										  <a href="#" class="" title="44 topics">Web</a>
 										</div>
 									  </div>
 

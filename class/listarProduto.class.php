@@ -13,7 +13,7 @@ if(!isset($_SESSION)){session_start();}
 function listar($limit){	
 	include ("mysql.class.php");
 	$query		= mysqli_query( $conn,"select idproduto, nmproduto, sobre, idioma, formaacesso, formato, emailsuporte, 
-								linkimagem1, linkimagem2, linkvideo, linkvenda, destaque, nmcategoria, usuario
+								linkimagem1, linkimagem2, linkvideo, linkvenda,linkpgproduto,valor ,destaque, avaliacaoB , nmcategoria, usuario
 								from produto
 								inner join categoria as cat on cat.idcategoria = produto.fkcategoria
 								inner join login on login.idlogin = produto.fklogin LIMIT 0 , $limit") or die (mysqli_error ($conn));
@@ -114,10 +114,40 @@ function listar($limit){
 					<label for="recipient-name" class="control-label">Link Venda</label>
 					<input type="text" class="form-control" id="venda" name="venda" value="'.$result["linkvenda"].'">
 				  </div>
+		<div class="col-sm-6">
+		   <label for="lname">Link da Página do Produto <span class="required">*</span></label>
+          <input type="text" name="pagProd" id="pagProd" class="form-control" value="'.$result["linkpgproduto"].'">
+		</div>		  
+		<div class="col-sm-6">		  
+		  <label for="lname">Valor do Curso <span class="required">*</span></label>
+          <input type="number" name="valor" id="valor" class="form-control" value="'.$result["valor"].'" >
+		</div>		
+		<div class="col-sm-6">		
+          <label for="email">Destaque <span class="required">*</span></label>
+          <select class="form-control" name="destaque">
+					<option value="">SELECIONE ...</option>
+					<option value="'.$result["destaque"].'">'.$destaque.'</option>
+					<option value="1">SIM</option>
+					<option value="2">NÃO</option>
+
+				</select>				  
+		</div>				  
 				  
 				 <div class="form-group">
 				 <img class="aligncenter" width="40%" height="90%" src="img/produto/'.$result["linkimagem1"].'" alt="">
 				
+				
+			<h5 class="title">AVALIAÇÃO BSUCESSO</h5>
+		  
+			<div class="box-body pad">
+                
+				<textarea class="textarea" placeholder="Avaliação" style="width: 100%; height: 200px; font-size: 14px;
+				line-height: 18px; border: 1px solid #dddddd; padding: 10px;" name="avaliacao"  >
+					'.$result["avaliacaoB"].'
+				</textarea>
+				 <p>			 
+				 
+			</div>	
 				  </div>	
 				
 				
