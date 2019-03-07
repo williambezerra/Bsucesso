@@ -66,11 +66,17 @@ function listar($limit){
 				 <img class="aligncenter" width="25%" height="90%" src="img/usuario/'.$result["imgusu"].'" alt="">
 				  </div>	
 				<p>
+
+				<div class="form-group">
+					<label for="recipient-name" class="control-label">Data Publicação(*)</label>
+					<input type="date" class="form-control" id="titulo" name="titulo" value="'.$result["dtpublica"].'">
+				  </div>
+				  
 					<div class="form-group">
 					<label for="recipient-name" class="control-label">Titulo(*)</label>
-					<input type="text" class="form-control" id="titulo" name="titulo" value="'.$result["titulo"].'">
+					<input type="text" class="form-control" id="titulo" name="data" value="'.$result["titulo"].'">
 				  </div>
-
+			
 				  
 					<div class="form-group">
                 
@@ -94,9 +100,9 @@ function listar($limit){
 				  </div>
 				  
 				 <div class="form-group">
-				 <img class="aligncenter" width="40%" height="90%" src="img/produto/'.$result["linckimagem1blog"].'" alt="">
+				 <img class="aligncenter" width="40%" height="90%" src="img/blog/'.$result["linckimagem1blog"].'" alt="">
 				  </div>	
-				  
+				  				  
 				
 				
 					<input type="hidden" class="form-control" id="idblog"  name="idblog" value="'.$result["idblog"].'">
