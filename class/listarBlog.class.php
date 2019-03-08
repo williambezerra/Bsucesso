@@ -69,12 +69,12 @@ function listar($limit){
 
 				<div class="form-group">
 					<label for="recipient-name" class="control-label">Data Publicação(*)</label>
-					<input type="date" class="form-control" id="titulo" name="titulo" value="'.$result["dtpublica"].'">
+					<input type="date" class="form-control" id="data" name="data" value="'.$result["dtpublica"].'">
 				  </div>
 				  
 					<div class="form-group">
 					<label for="recipient-name" class="control-label">Titulo(*)</label>
-					<input type="text" class="form-control" id="titulo" name="data" value="'.$result["titulo"].'">
+					<input type="text" class="form-control" id="titulo" name="titulo" value="'.$result["titulo"].'">
 				  </div>
 			
 				  
@@ -90,7 +90,7 @@ function listar($limit){
 
 				  <div class="col-sm-6">
 					<label for="recipient-name" class="control-label">Link Imagem</label>
-					<input type="file" class="form-control" id="linkimagem" name="linkimagem">
+					<input type="file" class="form-control" id="img1" name="img1">
 				  </div>				  
 
 

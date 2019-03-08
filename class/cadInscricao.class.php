@@ -16,13 +16,14 @@ include_once "mysql.class.php";
 // puxo todas a variaves
 $nome     = setPost("nome");
 $email = setPost("email");
+$interesse = setPost("interesse");
 		
 
  
  //verifico o preenchimento
 if( empty( $nome)  || empty($email) )
 {	
-		msg("Preencha os campos obrigatorios(*).");	
+		msg("Preencha os campos obrigatorios(*). Nome e E-mail");	
 }
 
 else{
@@ -38,12 +39,13 @@ else{
 
 		msg("Parabéns você já esta inscrito!");			
 		
+		
 		}
 		else{		
 		//SE  A CATEGORIA NAO EXISTE, CASDASTRA NOVA 	
 	
-				mysqli_query($conn, "insert into inscricao(nome, email)
-				values ('$nome', '$email')")  or die(mysql_error($conn));
+				mysqli_query($conn, "insert into inscricao(nome, email, interesse)
+				values ('$nome', '$email', '$interesse')")  or die(mysql_error($conn));
 				
 			msg("Obrigado pela inscrição!");															 		
 

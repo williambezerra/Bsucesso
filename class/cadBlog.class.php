@@ -25,7 +25,7 @@ $fklogin = 	$_SESSION['idusuario'];
 
  
  //verifico o preenchimento
-if( empty( $titulo) || empty( $artigo) || empty( $img1) )
+if( empty( $titulo) || empty( $artigo) || empty( $data) || empty( $img1) )
 {
 		
 		msg("Preencha os campos obrigatorios(*)");
@@ -295,6 +295,7 @@ $query		= mysqli_query( $conn,"SELECT idblog, dtpublica, titulo, conteudo, linck
 										<form id="subscribe" action="class/cadInscricao.class.php" method="post">
 										  <input type="text" name="nome" id="nome" class="form-control" placeholder="Nome">
 										  <input type="text" name="email" id="email" class="form-control" placeholder="Email">
+										  <input type="text" name="interesse" id="interesse" class="form-control" placeholder="Qual seu interesse?">
 										  <div class="pull-right">
 											<input type="submit" value="Enviar" id="submit" class="button">
 										  </div>

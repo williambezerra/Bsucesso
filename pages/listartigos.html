@@ -71,8 +71,9 @@
                         <span>Inscreva-se</span>
                     </h4>
         <form id="subscribe" action="class/cadInscricao.class.php" name="subscribe" method="post">
-          <input type="text" name="nome" id="nome" class="form-control" placeholder="Nome">
-          <input type="text" name="email" id="email" class="form-control" placeholder="Email">
+          <input type="text" name="nome" id="nome" class="form-control" placeholder="Nome" maxlength="80">
+          <input type="text" name="email" id="email" class="form-control" placeholder="Email" maxlength="100">
+          <input type="text" name="interesse" id="interesse" class="form-control" placeholder="Qual seu interesse?" maxlength="50">
           <div class="pull-right">
             <input type="submit" value="Enviar" id="submit" class="button">
           </div>

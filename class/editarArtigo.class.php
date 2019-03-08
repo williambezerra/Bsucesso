@@ -7,6 +7,8 @@
 	@ CONTATO - WILLIAMBEZERRADESOUSA@GMAIL.COM
 
 */
+
+
 if(!isset($_SESSION)){session_start();}
 
 sleep(1);
@@ -14,87 +16,52 @@ sleep(1);
 include_once "mysql.class.php";
 
 // puxo todas a variaves
-		
-$idproduto 		= $_POST['idproduto'];
-$nmproduto 		= $_POST['nmproduto'];
-$idioma 		= $_POST['idioma'];
-$facesso 		= $_POST['facesso'];
-$formato 		= $_POST['formato'];
-$emailsuporte 	= $_POST['emailsuporte'];
-$sobrep 		= $_POST['sobrep'];
+
+$idblog 	 	= $_POST['idblog'];
+$data 	 		= $_POST['data'];
+$titulo 		= $_POST['titulo'];
+$artigo 		= $_POST['sobrep'];
 $img1 			= $_FILES['img1']['name'];
 //$img2			= $_FILES['img2']['name'];
-$video 			= $_POST['video'];
 $venda 			= $_POST['venda'];
-$pagProd 			= $_POST['pagProd'];
-$valor 			= $_POST['valor'];
-$destaque 			= $_POST['destaque'];
-$avaliacao 			= $_POST['avaliacao'];
-
 $fklogin = 	$_SESSION['idusuario'];
-	
-
-//transforma tudo em caixa alta		
-
-$idioma  = mb_strtoupper($idioma);
-$facesso  = mb_strtoupper($facesso);
-$emailsuporte  = mb_strtoupper($emailsuporte);
-
-
-
 
  
  //verifico o preenchimento
-if( empty( $nmproduto) || empty( $idioma) || empty( $facesso) || empty( $formato) || empty( $emailsuporte) 
-	|| empty( $sobrep)	 || empty( $venda)|| empty($pagProd) || empty($valor) || empty($destaque)  )
+if( empty( $titulo) || empty( $artigo) || empty( $data) || empty( $img1) )
 {
-			msg("Preencha os campos obrigatorios(*)");
+		
+		msg("Preencha os campos obrigatorios(*)");
 		/*echo "<div class='alert alert-danger alert-dismissable'>
                     <button type='reset' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
                     <h4><i class='icon fa fa-ban'></i> Erro</h4>
                     Preencha os campos obrigatorios(*).
-                  </div>";*/
+                  </div>"; */
 }
-else if(empty($img1)){
-	
-		
-		//verifica se tem imagem anexada, se nao pega a que ja existe
-		
-		mysqli_query($conn,"UPDATE produto SET nmproduto='$nmproduto', sobre='$sobrep',
-					idioma='$idioma', formaacesso='$facesso', formato='$formato', emailsuporte='$emailsuporte',
-					linkvideo='$video', linkvenda='$venda', linkpgproduto='$pagProd', valor='$valor ', destaque='$destaque', avaliacaoB='$avaliacao', 
-					fklogin='$fklogin' WHERE idproduto='$idproduto' ")  or die(mysqli_error($conn));
-	
-			msg("Cadastro realizado com sucesso.");		
-}
+
 else{
- 
-	//VERIFICA A EXISTENCIA DA CATEGORIA PELO NOME 
- 	$recebe = mysqli_query($conn, "SELECT linkimagem1 FROM produto WHERE idproduto ='".$idproduto."'")  or die (mysqli_error($conn));
-	$dbimgAntiga =  mysqli_fetch_array($recebe);
-	$verificaDBimg = $dbimgAntiga['linkimagem1'];
+
+	//VERIFICA A EXISTENCIA DO ATIGO PARA DELETAR ARQUIVO FIXOS 
+ 	$recebeartigo = mysqli_query($conn, "SELECT titulo, linckimagem1blog FROM blog WHERE idblog ='".$idblog."'")  or die (mysqli_error($conn));
+	$dbnmartigo =  mysqli_fetch_array($recebeartigo);
+	$verificaTit = $dbnmartigo['titulo'];
+	$verificaImg = $dbnmartigo['linckimagem1blog'];
+	
+		$arquivo = "../img/blog/".$verificaImg ;
+		$arquivoHtml  = "../pages/".$verificaTit.".html";
+		
+		unlink($arquivo);
+		unlink($arquivoHtml);
 
 	
-		// Script para deletar arquivos
-		// unlink -> função do php para deletar arquivo 
-		$arquivo = "../img/produto/".$verificaDBimg;
-		if (!unlink($arquivo))
-		{
-			msg("Erro ao deletar $arquivo.");	
-		}
-		else
-		{
-			msg("Deletado $arquivo com sucesso!");	
-			
-		}
+		//SE  O PRODUTO NAO EXISTE, CASDASTRA NOVO
 
-	
 			
 			//VERFICAÇÃO PARA O UPLOAD DE IMAGEM
 			$arquivo 	= $_FILES['img1']['name'];
 			
 			//Pasta onde o arquivo vai ser salvo
-			$_UP['pasta'] = '../img/produto/';
+			$_UP['pasta'] = '../img/blog/';
 			
 			//Tamanho máximo do arquivo em Bytes
 			$_UP['tamanho'] = 1024*1024*100; //5mb
@@ -161,13 +128,220 @@ else{
 					//Upload efetuado com sucesso, exibe a mensagem
 					
 					
-				mysqli_query($conn,"UPDATE produto SET nmproduto='$nmproduto', sobre='$sobrep',
-					idioma='$idioma', formaacesso='$facesso', formato='$formato', emailsuporte='$emailsuporte',
-					linkimagem1='$nome_final', linkvideo='$video', linkvenda='$venda', linkpgproduto='$pagProd', 
-					valor='$valor ', destaque='$destaque', avaliacaoB='$avaliacao', 
-					fklogin='$fklogin' WHERE idproduto='$idproduto' ")  or die(mysqli_error($conn));
+				mysqli_query($conn," UPDATE blog SET dtpublica='$data', titulo='$titulo', conteudo='$artigo',
+						linckimagem1blog ='$nome_final', linckvendablog='$venda', fklogin='$fklogin'
+						where idblog='$idblog'")  or die(mysqli_error($conn));
 	 
-					msg("Cadastro realizado com sucesso.");		
+				/*  --------------------------  CRIA ARQUIVO HTML    */
+	 	 
+					msg("Artigo alterado com sucesso.");	
+
+	
+$query		= mysqli_query( $conn,"SELECT idblog, dtpublica, titulo, conteudo, linckimagem1blog, linckvendablog, 
+								login.nome ,login.usuario, login.imgusu 
+								 FROM blog
+									inner join login on login.idlogin = blog.fklogin 
+									WHERE idblog='$idblog'")	or die (mysqli_error ($conn));
+											
+									
+									
+		$result	= mysqli_fetch_array($query);
+
+		$Rdata = date("d/m/Y", strtotime($result["dtpublica"]));
+		
+		$Ridblog = $result["idblog"];
+		$Rtitulo = $result["titulo"];
+		$Rconteudo = $result["conteudo"];
+		$Rlinckimagem1blog = $result["linckimagem1blog"];
+		$Rlinckvendablog = $result["linckvendablog"];
+		$Rnome = $result["nome"];
+		$Rusuario = $result["usuario"];
+		$Rimgusu = $result["imgusu"];
+
+
+	$codigo ='<section class="post-wrapper-top">
+									<div class="container">
+									  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+										<h2>'.$titulo.'</h2>
+									  </div>
+									</div>
+								  </section>
+								  <!-- end post-wrapper-top -->
+								  <section class="section1">
+									<div class="container clearfix">
+									  <div class="content col-lg-8 col-md-8 col-sm-8 col-xs-12 clearfix">
+										<!-- SLIDE POST -->
+										<article class="blog-wrap">
+										  <div class="blog-media">
+											<div id="myCarousel" class="carousel slide">
+											  <div class="carousel-inner">
+												<div class="item active">
+												  <img src="img/blog/'.$Rlinckimagem1blog.'" alt="">
+												</div>
+												<!-- end item -->
+												<div class="item">
+												  <img src="img/slides_03.jpg" alt="">
+												</div>
+												<! -- end item -->
+											  </div>
+											  <!-- carousel inner -->
+											  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+																<span class="icon-prev"></span>
+															</a>
+											  <a class="right carousel-control" href="#myCarousel" data-slide="next">
+																<span class="icon-next"></span>
+															</a>
+											</div>
+											<!-- end carousel -->
+										  </div>
+										  <header class="page-header blog-title">
+											<h3 class="general-title">'.$titulo.'</h3>
+											<div class="post-meta">
+											  <p>
+												Publicado em: <span class="publish-on">'.$Rdata.'</span>
+										
+											  </p>
+											</div>
+										  </header>
+										  <div class="post-desc">
+											<p>
+												'.$Rconteudo.'
+											</p>
+					<a href="'.$Rlinckvendablog.'" target="_blank"> <center> <button type="button" class="btn btn-success btn-lg" id="btn">
+					<i class="fa fa-check"> </i> Treinametno Indicado</button> </center> </a>											
+										  </div>
+										</article>
+										<div class="author_box clearfix">
+										  <img class="img-circle alignleft" width="100" src="img/usuario/'.$Rimgusu.'" alt="">
+										  <h4>Postado por: <a href="#">'.$Rnome.'</a></h4>
+												<p></p>
+										  <div class="social_buttons">
+											<a href="single-with-sidebar.html#" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i class="fa fa-facebook"></i></a>
+											<a href="single-with-sidebar.html#" data-toggle="tooltip" data-placement="bottom" title="Twitter"><i class="fa fa-twitter"></i></a>
+											<a href="single-with-sidebar.html#" data-toggle="tooltip" data-placement="bottom" title="Google+"><i class="fa fa-google-plus"></i></a>
+											<a href="single-with-sidebar.html#" data-toggle="tooltip" data-placement="bottom" title="Dribbble"><i class="fa fa-dribbble"></i></a>
+										  </div>
+										</div>
+										<!-- end author_box -->
+										<div id="comments_wrapper">
+										  <h4 class="title">Comentários</h4>
+										  <ul class="comment-list">
+											<?php
+											include_once "class/mysql.class.php";
+
+										$busca		= mysqli_query($conn,"SELECT  idcomentarios,nome, email, comentarios.conteudo,data 
+																	FROM comentarios 
+																	  inner join blog on blog.idblog = comentarios.fkartigo
+																	 where comentarios.fkartigo='.$Ridblog.'
+                                                                     order by idcomentarios desc ") or die(mysqli_error($conn));
+
+										for( $i = 0; mysqli_num_rows($busca) > $i; $i++ ){
+												
+											$retorno	=  mysqli_fetch_array ($busca);
+												$data = date("d/m/Y", strtotime($retorno["data"]));
+										
+										
+										$coments ="									
+											<li>
+											  <article class=comment>
+												<img src=img/usudefaut2.png alt=avatar class=comment-avatar>
+												<div class=comment-content>
+												  <h4 class=comment-author>
+												  {$retorno["nome"]} <small class=comment-meta>{$data}</small>
+																		
+																	</h4> {$retorno["conteudo"]}									</div>
+											  </article>
+											  <!-- End .comment -->
+											</li>													
+										";
+										echo $coments;		
+											}	  
+										  
+										  ?>
+										  </ul>
+										  <!-- End .comment-list -->
+										  <div class="clearfix"></div>
+										  <div class="comments_form">
+											<h4 class="title">Deixe seu comentário</h4>
+											<form id="comments_form" action="class/cadComentario.class.php" name="comments_form" class="row" method="post">
+											  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+												<input type="text" name="nome" id="nome" class="form-control" placeholder="Nome" maxlength="80" >
+												<input type="text" name="email" id="email" class="form-control" placeholder="E-mail" maxlength="100">	
+												<input type="hidden" class="form-control" id="idblog"  name="idblog" value="'.$Ridblog.'">												
+												<textarea class="form-control" name="mensagem" id="mensagem" rows="6" placeholder="Sua mensagem ..." maxlength="200" ></textarea>
+												<input type="submit" value="ENVIAR"  id="btn" class="button small">
+											  </div>
+											  		
+											</form>
+										  </div>
+										  <!-- end comments_Form -->
+										</div>
+										<!-- div comments -->
+
+									  </div>
+									  <!-- end content -->
+
+									  <!-- SIDEBAR -->
+									<div id="sidebar" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+									  <div class="widget">
+										<h4 class="title">
+														<span>Inscreva-se</span>
+													</h4>
+										<form id="subscribe" action="class/cadInscricao.class.php" method="post">
+										  <input type="text" name="nome" id="nome" class="form-control" placeholder="Nome" maxlength="80">
+										  <input type="text" name="email" id="email" class="form-control" placeholder="Email" maxlength="100">
+										  <input type="text" name="interesse" id="interesse" class="form-control" placeholder="Qual seu interesse?" maxlength="50">
+										  <div class="pull-right">
+											<input type="submit" value="Enviar" id="submit" class="button">
+										  </div>
+										</form>
+									  </div>
+
+
+									  <div class="widget">
+										<h4 class="title">
+														<span>Tags</span>
+													</h4>
+
+										<div class="tagcloud">
+										  <a href="#" class="" title="12 topics">Sucesso</a>
+										  <a href="#" class="" title="2 topics">Ganhar</a>
+										  <a href="#" class="" title="21 topics">Cursos</a>
+										  <a href="#" class="" title="5 topics">Você que Faz</a>
+										  <a href="#" class="" title="62 topics">Positivo</a>
+										  <a href="#" class="" title="12 topics">Produtividade</a>
+										  <a href="#" class="" title="88 topics">Buscar</a>
+										  <a href="#" class="" title="15 topics">Criatividade</a>
+										  <a href="#" class="" title="31 topics">Vontade</a>
+										  <a href="#" class="" title="16 topics">Luta</a>
+										  <a href="#" class="" title="32 topics">Treinamentos</a>
+										  <a href="#" class="" title="12 topics">Dinheiro</a>
+										  <a href="#" class="" title="44 topics">Pessoal</a>
+										  <a href="#" class="" title="44 topics">Biblioteca</a>
+										  <a href="#" class="" title="44 topics">Online</a>
+										  <a href="#" class="" title="44 topics">Web</a>
+										</div>
+									  </div>
+
+									</div>
+									<!-- end sidebar -->
+									</div>
+									<!-- end container -->
+								  </section>
+								  <!-- end section -->'; // Faça outra concatenação com o código HTML
+								  
+					$dir_arq = "../pages/$Rtitulo.html"; // Isso é uma concatenação
+					if (file_exists($dir_arq)) {
+					  echo "O arquivo \"$dir_arq\" já existe."; // Usa a variável que você já criou com o nome do arquivo
+					} else {
+					  $arq = fopen($dir_arq, "w");
+					  if(fwrite($arq,$codigo)){ // Aqui você tinha usado a variável errada $arq em vez de $dir_arq
+						msg("Arquivo criado com sucesso!");
+					  } else {
+						msg("erro ao criar o arquivo");
+					  }
+					}					
 					
 					/*echo "<div class='alert alert-success alert-dismissable'>
                     <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
@@ -189,8 +363,8 @@ else{
 
 				}
 			}
-				
+		
+	}
 
-		}
-	
+
 ?>
