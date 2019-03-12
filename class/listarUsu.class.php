@@ -66,8 +66,9 @@ function listar($limit){
           <label for="fname">E-mail</label>
 			<input type="text" name="email" id="email" class="form-control" value="'.$result["email"].'" >
 		  <label for="fname">Nivel <span class="required">*</span></label>
+		  
             <select class="form-control" name="nivel" >
-					<option value="value="'.$result["nivel"].'">'.$result["nivel"].' - '.$nivel.'</option>
+					<option value="'.$result["nivel"].'">'.$result["nivel"].' - '.$nivel.'</option>
 					<option value="1">01 - AUTOR</option>
 					<option value="2">02 - ADMINISTRADOR</option>
 	
@@ -80,6 +81,7 @@ function listar($limit){
 			<img class="aligncenter" width="20%" height="90%" src="img/usuario/'.$result["imgusu"].'" alt="">
 			
 			<input type="hidden" class="form-control" id="idlogin"  name="idlogin" value="'.$result["idlogin"].'">	
+			<input type="hidden" class="form-control" id="imgusu"  name="imgusu" value="'.$result["imgusu"].'">	
 				
 					<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
 					<button type="submit" class="btn btn-warning" id="button">Alterar</button>
@@ -103,7 +105,7 @@ function listar($limit){
 				<h4 class="modal-title" id="exampleModalLabel">Confirmar Exclusão? </h4>
 			  </div>
 			<div class="modal-body">
-				<form method="POST" action="class/excluirCategoria.class.php" enctype="multipart/form-data">
+				<form method="POST" action="class/excluirUsu.class.php" enctype="multipart/form-data">
 								
 					<div class="form-group">
 					<label for="recipient-name" class="control-label">Usuário(*)</label>

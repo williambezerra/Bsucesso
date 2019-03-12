@@ -60,9 +60,11 @@ else{
 	
 				mysqli_query($conn, "delete from login where idlogin='$idlogin' ")  or die(mysql_error($conn));
 	 
-					$arquivo = "../img/usuario/".$image ;					
-					unlink($arquivo);
- 
+	 
+					if($image !="fun2.png"){
+						$arquivo = "../img/usuario/".$image ;					
+						unlink($arquivo);
+					}
 					
 					msg("Exclusão realizada com sucesso.");	
 					
