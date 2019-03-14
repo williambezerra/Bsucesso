@@ -34,11 +34,16 @@ function listar($limit){
                         <td >'.$result["email"].'</td>
                         <td >'.$nivel.'</td>
 						<td width="10%" align="center"><img  src="img/usuario/'.$result["imgusu"].'" width="50%" ></td>
-						<td width="8%">					
+						<td width="12%">					
 				
 				<button type="button" class="btn btn-xs btn-warning" data-toggle="modal"
 				data-target="#exampleModal'.$result["idlogin"].'" ><i class="fa fa-pencil" title="EDITAR"></i></button>
 				&nbsp;&nbsp;&nbsp;
+				
+				<button type="button" class="btn btn-xs btn-primary" data-toggle="modal"
+				data-target="#alterSenha'.$result["idlogin"].'" ><i class="fa fa-lock" title="ALTER SENHA"></i></button>
+				&nbsp;&nbsp;&nbsp;
+								
 				
 				<button type="button" class="btn btn-xs btn-danger" data-toggle="modal"
 				data-target="#excluirModal'.$result["idlogin"].'" ><i class="fa fa-trash" title="EXCLUIR"></i></button>
@@ -93,6 +98,47 @@ function listar($limit){
 		  </div>
 		</div>  
 			<!-- FIM DO MODAL EDITAR --> 
+			
+			
+			
+			
+			  <!-- MODAL ALTERAR SENHA -->
+			  
+		<div class="modal fade" id="alterSenha'.$result["idlogin"].'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+		  <div class="modal-dialog" role="document">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="exampleModalLabel">Alterar Senha do Usuário </h4>	
+			  </div>
+			<div class="modal-body">
+				<form method="POST" action="class/editarSenha.class.php" enctype="multipart/form-data">
+				
+          <label for="email">Nome Completo <span class="required">*</span></label>
+			<input type="text" name="nmcompleto" id="nmcompleto" class="form-control" value="'.$result["nome"].'" disabled >
+          <label for="email">Usuário <span class="required">*</span></label>
+			<input type="text" name="usuario" id="usuario" class="form-control" value="'.$result["usuario"].'" disabled>
+	
+			 <label for="email">Senha <span class="required">*</span></label>	
+			<input type="password" name="Senha" id="Senha" class="form-control" >
+		
+		
+			<img class="aligncenter" width="20%" height="90%" src="img/usuario/'.$result["imgusu"].'" alt="">
+			
+			<input type="hidden" class="form-control" id="idlogin"  name="idlogin" value="'.$result["idlogin"].'">	
+			<input type="hidden" class="form-control" id="imgusu"  name="imgusu" value="'.$result["imgusu"].'">	
+				
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+					<button type="submit" class="btn btn-warning" id="button">Alterar</button>
+			 
+				</form>
+			</div>
+			  
+			</div>
+		  </div>
+		</div>  
+			<!-- FIM DO MODAL EDITAR --> 
+			
 			
 			
 			  <!-- MODAL EXCLUIR -->

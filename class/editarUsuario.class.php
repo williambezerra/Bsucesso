@@ -53,6 +53,16 @@ else{
 
 		if($verificadado =="" || $verificadado == $idlogin){
 		
+				if(empty($img1)){
+									
+						mysqli_query($conn, "UPDATE login SET nome='$nmcompleto', usuario='$usuario',
+								email='$email', nivel='$nivel' where idlogin='$idlogin' ")  or die(mysqli_error($conn));
+											
+							msg("Alteração realizada com sucesso.");	
+				}	
+			else{		
+				
+				
 				//SE  O PRODUTO NAO EXISTE, CASDASTRA NOVO
 
 					
@@ -127,14 +137,7 @@ else{
 						if(move_uploaded_file($_FILES['img1']['tmp_name'], $_UP['pasta']. $nome_final)){
 							//Upload efetuado com sucesso, exibe a mensagem
 
-								if(empty($img1)){
-									
-										mysqli_query($conn, "UPDATE login SET nome='$nmcompleto', usuario='$usuario',
-											email='$email', nivel='$nivel' where idlogin='$idlogin' ")  or die(mysqli_error($conn));
-											
-												msg("Alteração realizada com sucesso.");	
-								}	
-								else{
+						
 									
 											if($imagemAntiga !="fun2.png"){
 												$arquivo = "../img/usuario/".$imagemAntiga ;					
@@ -147,7 +150,7 @@ else{
 												where idlogin='$idlogin'")  or die(mysqli_error($conn));
 												
 												msg("Alteração realizada com sucesso.");	
-								}				
+											
 							
 						}else{
 							//Upload não efetuado com sucesso, exibe a mensagem
@@ -163,7 +166,7 @@ else{
 						}
 					}		
 
-		
+								}
 		}
 		else{		
 

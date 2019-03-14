@@ -24,6 +24,7 @@ $buscaLogin		= mysqli_query($conn, "SELECT  *
 								$recebidfunc =  mysqli_fetch_array($buscaLogin);
 									
 									$idlogin = $recebidfunc['idlogin'];
+									$nivel = $recebidfunc['nivel'];
 
 	
 if( empty( $usuario ) or empty( $senha ) ){
@@ -61,6 +62,7 @@ else{
 
 		$_SESSION['user']		= $usuario;
 		$_SESSION['idusuario']   = $idlogin;
+		$_SESSION['nivel']   = $nivel;
 
 			
 		

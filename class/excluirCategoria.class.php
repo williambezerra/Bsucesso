@@ -14,18 +14,16 @@ sleep(1);
 include_once "mysql.class.php";
 
 // puxo todas a variaves
-$idcategoria     = setPost("idcategoria");
+$idcategoria     = $_POST['idcategoria'];
 
 
  
  //verifico o preenchimento
-if( empty( $nmcategoria)  )
+if( empty($idcategoria))
 {
-		echo "<div class='alert alert-danger alert-dismissable'>
-                    <button type='reset' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
-                    <h4><i class='icon fa fa-ban'></i> Erro</h4>
-                    Preencha os campos obrigatorios(*).
-                  </div>";
+	
+	msg("Preencha os campos obrigatorios(*).");
+
 }
 
 else{
@@ -34,7 +32,7 @@ else{
 	//VERIFICA A EXISTENCIA DA CATEGORIA PELO NOME 
  	$recebeidcategoria = mysqli_query($conn, "SELECT fkcategoria FROM produto WHERE fkcategoria ='".$idcategoria."'") or die (mysqli_error($conn));
 	$dbidcategoria =  mysqli_fetch_array($recebeidcategoria);
-	$verificadado = $dbidcategoria['idcategoria'];
+	$verificadado = $dbidcategoria['fkcategoria'];
 
 
 		if($verificadado == $idcategoria){

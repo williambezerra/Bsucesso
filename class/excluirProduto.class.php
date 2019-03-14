@@ -31,10 +31,17 @@ if( empty( $idproduto)  )
 else{
  
 
-			//VERIFICA A EXISTENCIA DA CATEGORIA PELO NOME 
+			//VERIFICA A EXISTENCIA DA IMAGEM DO PRODUTO  
 		$recebeDB = mysqli_query($conn, "SELECT linkimagem1 FROM produto WHERE idproduto ='".$idproduto."'") or die (mysqli_error($conn));
 		$dbImg =  mysqli_fetch_array($recebeDB);
 		$verifica = $dbImg['linkimagem1'];
+		
+
+			//VERIFICA A EXISTENCIA DA CATEGORIA PELO NOME 
+		$recebeAv = mysqli_query($conn, "SELECT fkproduto FROM avaliacao WHERE fkproduto ='".$idproduto."'") or die (mysqli_error($conn));
+		$dbAv =  mysqli_fetch_array($recebeAv);
+		$verificaAv = $dbAv['fkproduto'];
+				
 		
 		// Script para deletar arquivos
 		// unlink -> função do php para deletar arquivo 
@@ -45,21 +52,25 @@ else{
 		}
 		else
 		{
-			msg("Imagem : $arquivo, deletada com sucesso!");	
+			
+			
+			
+			if($verificaAv !=0){
+				
+				mysqli_query($conn, "delete from avaliacao where fkproduto ='$idproduto' ")  or die(mysql_error($conn));
+				mysqli_query($conn, "delete from produto where idproduto ='$idproduto' ")  or die(mysql_error($conn));
+				msg("Imagem : $arquivo, deletada com sucesso!");	
+				msg("Exclusão realizada com sucesso.");				
+			}
+			else{
 			
 				mysqli_query($conn, "delete from produto where idproduto ='$idproduto' ")  or die(mysql_error($conn));
-	 
-				msg("Exclusão realizada com sucesso.");	
-					
-					/*echo "<div class='alert alert-success alert-dismissable'>
-                    <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
-                    <h4>	<i class='icon fa fa-check'></i> Sucesso!</h4>
-                    Alteração realizada com sucesso.
-                  </div>";*/		
+				
+				msg("Imagem : $arquivo, deletada com sucesso!");					
+				msg("Exclusão realizada com sucesso.");				
+			}
+		
 		}
-
-
-
 		
 	}
 

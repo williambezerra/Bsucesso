@@ -217,7 +217,7 @@ $query		= mysqli_query( $conn,"SELECT idblog, dtpublica, titulo, conteudo, linck
 										</article>
 										<div class="author_box clearfix">
 										  <img class="img-circle alignleft" width="100" src="img/usuario/'.$Rimgusu.'" alt="">
-										  <h4>Postado por: <a href="#">'.$Rnome.'</a></h4>
+										  <h5>Postado por: <a href="#">'.$Rnome.'</a></h5>
 												<p></p>
 										  <div class="social_buttons">
 											<a href="single-with-sidebar.html#" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i class="fa fa-facebook"></i></a>
@@ -250,10 +250,10 @@ $query		= mysqli_query( $conn,"SELECT idblog, dtpublica, titulo, conteudo, linck
 											  <article class=comment>
 												<img src=img/usudefaut2.png alt=avatar class=comment-avatar>
 												<div class=comment-content>
-												  <h4 class=comment-author>
+												  <h5 class=comment-author>
 												  {$retorno["nome"]} <small class=comment-meta>{$data}</small>
 																		
-																	</h4> {$retorno["conteudo"]}									</div>
+																	</h5> {$retorno["conteudo"]}									</div>
 											  </article>
 											  <!-- End .comment -->
 											</li>													

@@ -36,6 +36,13 @@ else{
 		$dbImg =  mysqli_fetch_array($recebeDB);
 		$verifica = $dbImg['linckimagem1blog'];
 		$verificahtml = $dbImg['titulo'];
+
+		// VERIFICA OS COMENTARIOS PARA EXCLUIR
+		$recebeCom = mysqli_query($conn, "SELECT fkartigo FROM comentarios WHERE fkartigo ='".$idblog."'") or die (mysqli_error($conn));
+		$dbCom =  mysqli_fetch_array($recebeCom);
+		$verificaCom = $dbCom['fkartigo'];
+
+
 		
 		// Script para deletar arquivos
 		// unlink -> função do php para deletar arquivo 
@@ -47,19 +54,25 @@ else{
 		}
 		else
 		{
-			unlink($arquivoHtml);
-			msg("Imagem : $arquivo, deletada com sucesso!");	
-			msg("HTML : $arquivoHtml, deletada com sucesso!");	
-			
+			if($verificaCom !=0){
+				
+				unlink($arquivoHtml);
+				msg("Imagem : $arquivo, deletada com sucesso!");	
+				msg("HTML : $arquivoHtml, deletada com sucesso!");	
+				mysqli_query($conn, "delete from comentarios where fkartigo ='$idblog' ")  or die(mysql_error($conn));
 				mysqli_query($conn, "delete from blog where idblog ='$idblog' ")  or die(mysql_error($conn));
-	 
-				msg("Exclusão realizada com sucesso.");	
-					
-					/*echo "<div class='alert alert-success alert-dismissable'>
-                    <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
-                    <h4>	<i class='icon fa fa-check'></i> Sucesso!</h4>
-                    Alteração realizada com sucesso.
-                  </div>";*/		
+					msg("Exclusão realizada com sucesso.");					
+			}
+			else{
+			
+				unlink($arquivoHtml);
+				msg("Imagem : $arquivo, deletada com sucesso!");	
+				msg("HTML : $arquivoHtml, deletada com sucesso!");	
+				
+					mysqli_query($conn, "delete from blog where idblog ='$idblog' ")  or die(mysql_error($conn));
+					msg("Exclusão realizada com sucesso.");	
+			}	
+	
 		}
 
 

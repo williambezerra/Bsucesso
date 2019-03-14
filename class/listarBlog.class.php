@@ -15,10 +15,12 @@ if(!isset($_SESSION)){session_start();}
 function listar($limit){	
 	include ("mysql.class.php");
 
-	$query		= mysqli_query( $conn,"SELECT idblog, dtpublica, titulo, conteudo, linckimagem1blog, linckvendablog, login.nome ,login.usuario, login.imgusu 
-										FROM blog
-										inner join login on login.idlogin = blog.fklogin 
-										ORDER BY idblog desc") or die (mysqli_error ($conn));
+	$query		= mysqli_query( $conn,"SELECT idblog, dtpublica, titulo, blog.conteudo, linckimagem1blog, linckvendablog,
+								login.nome ,login.usuario, login.imgusu, count(idcomentarios) qtdComt  
+								FROM blog
+								inner join login on login.idlogin = blog.fklogin 
+								left join comentarios on comentarios.fkartigo = blog.idblog
+							group by idblog order by idblog desc") or die (mysqli_error ($conn));
 	
 	for( $i = 0; mysqli_num_rows( $query ) > $i ; $i++ ){
 		
@@ -33,7 +35,7 @@ function listar($limit){
                         <td >'.$data.'</td>
                         <td >'.$result["usuario"].'</td>
 						<td width="20%" align="center"> <img  src="img/blog/'.$result["linckimagem1blog"].'" width="25%" >  </td>						
-
+                        <td >'.$result["qtdComt"].'</td>
 						<td width="8%">					
 				
 				<button type="button" class="btn btn-xs btn-warning" data-toggle="modal"

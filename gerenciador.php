@@ -92,6 +92,7 @@ if( isset( $_GET['logout'] ) ){
               <h4>GERENCIADOR - <span>B.SUCESSO</span></h4>			  
             </a>
 				  Bem vindo: <b><?=$_SESSION['user'] ?></b>
+
           </div>
         </div>
 
@@ -135,6 +136,7 @@ if( isset( $_GET['logout'] ) ){
                   <ul class="dropdown">
                     <li><a href="?pagina=usuario">Novo</a></li>
                     <li><a href="?pagina=listusuario">Listagem</a></li>
+                    <li><a href="?pagina=altsenha">Alterar Senha</a></li>
 
                   </ul>
                 </li>
@@ -159,10 +161,27 @@ if( isset( $_GET['logout'] ) ){
  
 			<?php
 			
+
+		
 				# SCRIPT DE QUERY STRING DESENVOLVIDO POR LEDSON OLIVEIRA .
 				$pag	= @$_GET['pagina']; # Variável que recebe a página.
 				$pasta	= "pages"; # Pasta onde as páginas irão ficar.
 
+
+
+	 
+	if($_SESSION['nivel'] !=2 && ($pag == "listusuario" || $pag == "listproduto" || $pag == "listBlog" || $pag == "listcategoria"
+			|| $pag == "categoria" || $pag == "cadproduto" || $pag == "usuario") ){
+		
+								echo "<br>
+						<center><div class='alert alert-warning alert-dismissable'>
+									<button type='reset' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+									<h4><i class='icon fa fa-danger'></i> Atenção</h4>
+									Área Restrita!
+								  </div></center>";		
+		
+	}
+	else{
 	
 		
 					if( !isset($pag) ){
@@ -180,7 +199,7 @@ if( isset( $_GET['logout'] ) ){
 					else{
 						include $pasta."/".$pag.".html";	
 					}	
-					
+	}	
 			?>			
  
  
