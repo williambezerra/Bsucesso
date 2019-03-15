@@ -1,7 +1,7 @@
 
 
 <script src="site/js/jquery.api.js"></script>
-    <script type="text/javascript">
+   <script type="text/javascript">
     
 	$(function(){
  
@@ -15,7 +15,7 @@
             type: "POST",
             data: { senha:a, csenha:b },
              
-            url: "class/altSenha.class.php",
+            url: "class/altsenha.class.php",
             dataType: "html",
             success: function(result){
                 $("#ok").html('');
@@ -64,16 +64,16 @@
 
         <h5 class="title">INOFORMAÇÕES DE SENHA</h5>
 
+        <form id="#" action=""  method="post">
           <label for="email">Senha <span class="required">*</span></label>	
 			<input type="password" name="Senha" id="Senha" class="form-control" >
 		  <label for="email">Confirma Senha <span class="required">*</span></label>
 			<input type="password" name="Csenha" id="Csenha" class="form-control" >
-					
 		<br>
-
+		<center><div id="loading" style="display: none;"><img src="loading.gif"></div> <div id="ok"></div></center>
+		
 	  <div class="box-footer">
-        <button type="submit" class="btn btn-primary" id="btn"><i class="fa fa-check"></i> Salvar</button>
-
+        <button type="button" class="btn btn-primary" id="btn"><i class="fa fa-check"></i> Salvar</button>
        <button type="reset" class="btn btn-default pull-right "><i class="fa fa-ban"></i> Cancelar</button>
      </div><!-- /.box-footer -->
 
