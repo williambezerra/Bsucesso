@@ -163,7 +163,7 @@
 				include_once "class/mysql.class.php";
 										
 	$query		= mysqli_query( $conn,"select idproduto, nmproduto, sobre, idioma, formaacesso, formato, emailsuporte, 
-										linkimagem1, linkimagem2, linkvideo, linkvenda, destaque, avaliacaoB, nmcategoria, usuario
+										linkimagem1, linkimagem2, linkvideo, linkvenda, linkpgproduto , valor, destaque, avaliacaoB, nmcategoria, usuario
 										from produto
 										inner join categoria as cat on cat.idcategoria = produto.fkcategoria
 										inner join login on login.idlogin = produto.fklogin 
@@ -205,7 +205,7 @@
 						  <div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 							<h4 class="modal-title" id="exampleModalLabel">Prévia: <B>'.$result["nmproduto"].'</B> 
-							<a href="'.$result["linkvenda"].'" target="_blank"> <button type="button" class="btn btn-success  pull-right" id="button"><i class="fa fa-file"></i> Acessar página do Treinametno</button></a>
+							<a href="'.$result["linkpgproduto"].'" target="_blank"> <button type="button" class="btn btn-success  pull-right" id="button"><i class="fa fa-file"></i> Acessar página do Treinametno</button></a>
 							</h4>
 							
 						  </div>
@@ -223,7 +223,7 @@
 			  
 				  <div class="content col-lg-12 col-md-12 col-sm-12 clearfix " >
 					
-					<h2>'.$result["nmproduto"].' </h2> 
+					<h2><b>'.$result["nmproduto"].'</b></h2> 
 					<p align="justify"> 
 					
 						'.$result["sobre"].'
@@ -247,11 +247,34 @@
 
 				
 				
-						<a href="'.$result["linkvenda"].'"  target="_blank"> <center> <button type="button" class="btn btn-danger btn-lg" id="btn"><i class="fa fa-database"> </i> MAIS INOFORMAÇÕES DO CURSO</button> </center> </a>
+						<a href="'.$result["linkpgproduto"].'"  target="_blank"> <center> <button type="button" class="btn btn-danger btn-lg" id="btn"><i class="fa fa-database"> </i> MAIS INOFORMAÇÕES DO CURSO</button> </center> </a>
 						
 							<P>
 							<P>
 							
+							
+						<div class="col-lg-3 col-md-3 col-sm-12">
+									<div class="theme_details">
+											<div class="item_price">
+												<h3><span><small>R$</small></span></h3>
+							  </div> 
+							  <!-- item_price -->
+							  <hr> 
+							  
+							  <div class="buttons">
+								<a class="button btn-block large" href="'.$result["linkvenda"].'" target="_blank"><i class="fa fa-download"></i> Adquirir </a>
+							  </div>
+							  <!-- buttons -->
+							<hr>
+							  <div class="rating text-center">
+							<h2>4 <i class="fa fa-heart"></i></h2>
+								<p>Nota 1/5</p>
+							  </div>
+							  <!-- rating -->
+							</div>
+							<!-- theme_details -->
+						  </div>
+						  <!-- col-lg-3 -->	
 					<div class="theme_overviews clearfix">
 					   
 					   <div class="col-lg-4 col-md-4 col-sm-12">
@@ -310,7 +333,7 @@
 						  <header>
 							<h3>Segurança</h3>
 						  </header>
-								Agrantida pela plataforma de vendas
+								Plataforma de vendas
 						</div>
 						</div>		  
 
@@ -322,12 +345,16 @@
 						  <header>
 							<h3>Pagamento</h3>
 						  </header>
-								Cartão de credito, Boleto
+								Facilitado
 						</div>
 					  </div>				
 						
+												
 					  </div>
-							  
+							
+
+						  
+							
 
 							</form>
 						</div>

@@ -122,7 +122,7 @@
 			  
 				  <div class="content col-lg-12 col-md-12 col-sm-12 clearfix " >
 					
-					<h2>'.$result["nmproduto"].' </h2> 
+					<h2><b>'.$result["nmproduto"].'</b></h2> 
 					<p align="justify"> 
 					
 						'.$result["sobre"].'
@@ -164,12 +164,12 @@
 								<a class="button btn-block large" href="'.$result["linkvenda"].'" target="_blank"><i class="fa fa-download"></i> Adquirir </a>
 							  </div>
 							  <!-- buttons -->
-							<!--  <hr>
+							<hr>
 							  <div class="rating text-center">
 							<h2>4 <i class="fa fa-heart"></i></h2>
 								<p>Nota 1/5</p>
 							  </div>
-							  <!-- rating -- -->
+							  <!-- rating -->
 							</div>
 							<!-- theme_details -->
 						  </div>
@@ -232,7 +232,7 @@
 						  <header>
 							<h3>Segurança</h3>
 						  </header>
-								Agrantida pela plataforma de vendas
+								Plataforma de vendas
 						</div>
 						</div>		  
 
@@ -244,7 +244,7 @@
 						  <header>
 							<h3>Pagamento</h3>
 						  </header>
-								Cartão de credito, Boleto
+								Facilitado
 						</div>
 					  </div>				
 						
