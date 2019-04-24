@@ -125,8 +125,8 @@ function listar($limit){
 		<div class="col-sm-6">		
           <label for="email">Destaque <span class="required">*</span></label>
           <select class="form-control" name="destaque">
-					<option value="">SELECIONE ...</option>
 					<option value="'.$result["destaque"].'">'.$destaque.'</option>
+					<option value=""> </option>
 					<option value="1">SIM</option>
 					<option value="2">NÃO</option>
 
