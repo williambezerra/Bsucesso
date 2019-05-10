@@ -111,7 +111,8 @@
 										linkimagem1, linkimagem2, linkvideo, linkvenda, linkpgproduto , valor, destaque, avaliacaoB, nmcategoria, usuario
 										from produto
 										inner join categoria as cat on cat.idcategoria = produto.fkcategoria
-										inner join login on login.idlogin = produto.fklogin  ") or die (mysqli_error ($conn));
+										inner join login on login.idlogin = produto.fklogin  
+										 order by destaque") or die (mysqli_error ($conn));
 				
 				
 				
@@ -121,6 +122,8 @@
 					$result	= mysqli_fetch_array($query);
 					
 					$conteudo = substr($result["sobre"], 0, 15);  
+					
+					 $titulo = substr($result["nmproduto"], 0, 28);
 						
 				$html = '
 					
@@ -132,7 +135,7 @@
 									<img src="img/produto/'.$result["linkimagem1"].'"  alt="Park">
 						
 								<div class="caption">
-									<h5><b>'.$result["nmproduto"].'</b></h5>
+									<h5><b><a href="#" title="'.$result["nmproduto"].'">'.$titulo.'...</a></b></h5>
 									<font size="2">'.$result["nmcategoria"].'</font><br>
 
 								</div>
