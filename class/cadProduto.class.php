@@ -112,7 +112,7 @@ else{
 			}
 			
 			//Faz a verificação da extensao do arquivo
-			$extensao = strtolower(end(explode('.', $_FILES['img1']['name'])));
+			//$extensao = strtolower(end(explode('.', $_FILES['img1']['name'])));
 			if(array_search($extensao, $_UP['extensoes'])=== false){		
 				
 				msg("A imagem não foi cadastrada extesão inválida.");
