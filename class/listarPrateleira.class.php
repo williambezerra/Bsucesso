@@ -75,7 +75,7 @@
 					$result	= mysqli_fetch_array($query);
 					
 					$conteudo = substr($result["sobre"], 0, 15);  
-					
+					 $titulo = substr($result["nmproduto"], 0, 28);
 		
 					$html = '
 					
@@ -87,7 +87,7 @@
 									<img src="img/produto/'.$result["linkimagem1"].'"  alt="Park">
 						
 								<div class="caption">
-									<h5><b>'.$result["nmproduto"].'</b></h5>
+									<h5><b><a href="#" title="'.$result["nmproduto"].'">'.$titulo.'...</a></b></h5>
 									<font size="2">'.$result["nmcategoria"].'</font><br>
 
 								</div>
