@@ -1,120 +1,21 @@
-	    <script src="site/js/jquery.api.js"></script>
-<script type="text/javascript">
+﻿<?PHP
+/*
+	@ MÓDULO PARA PRATELEIRA GERAL
+	@ PROJETO - BSUCESSO V.1
+	@ TODOS OS DIREITOS RESERVADOS
+	@ CRÉDITOS :WILLIAM BEZERRA
+	@ CONTATO - WILLIAMBEZERRADESOUSA@GMAIL.COM
 
-	$(function(){
- 
-    $("#btn").click(function(){
- 
-        var a = $("select[name=categoria]").val();
-        var b = $("input[name=busca]").val();
-        
-        $.ajax({
-             
-            type: "POST",
-            data: { categoria:a, busca:b },
-             
-            url: "class/listarPrateleira.class.php",
-            dataType: "html",
-            success: function(result){
-                $("#ok").html('');
-                $("#ok").append(result);
-            },
-            beforeSend: function(){
-               !$('#loaling').css({display:"block"});
-            },
-            complete: function(msg){
-                $('#loading').css({display:"none"});
-            }
-        });
-         
-    });
-    });
-	   
-</script>
-
-
-    <div class="container clearfix">
-      <div class="content col-lg-12 col-md-12 col-sm-12 clearfix">
-        <div class="general-title text-center">
-          <h3>Prateleira de Sucesso</h3>
-        </div>
-        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-		<p>
-		
-
-		
-		<div class="container gallery-container">
-    
-		<div class="tz-gallery">
-
-        <div class="row">
-		<div class="col-sm-10">
-		<label for="email"></label>
-          <input type="text" name="busca" id="busca" class="form-control" placeholder="Buscar" >
-</p>
-</p>
-		</div>
-		  <div class="col-sm-4">
-					
-					  <select class="form-control" name="categoria">
-								<option value="">Selecione a Catégoria ...</option>
-									<?PHP
-										include_once "class/mysql.class.php";
-
-										$busca		= mysqli_query($conn,"SELECT  idcategoria, nmcategoria, descategoria 
-																	FROM categoria	 ") or die(mysqli_error($conn));
-
-										for( $i = 0; mysqli_num_rows($busca) > $i; $i++ ){
-												
-											$retorno	=  mysqli_fetch_array ($busca);
-												
-										echo "<option value='".$retorno['idcategoria']."'> ".$retorno['nmcategoria']."</option> ";
-												
-											}
-									?>
-
-					</select> 	  
-
-		</div>	
-
-		<div class="col-sm-4">
-			<button type="button" class="btn btn-primary" id="btn"><i class="fa fa-search"></i> </button>
-		</div>
-		</P>
-		</P>
-		</P>
-		</P>
-		<!-- retorna galeria de produtos -->
-		
-		
-		<!-- -->
-
-
-        </div>
-
-
-	</div>	
-		</p>
-		<div id="loading" style="display: none;"><center><img src="loading.gif"></center></div> <div id="ok"></div><br>
-		
-		</div>
-				<hr>
-
-		<h4>Todos os Cursos e Treinamentos </h4>
-		<p>
-		<div class="container gallery-container">
-			<div class="tz-gallery">
-			<div class="row">
-				<?php
-			
-
-				
-				$query		= mysqli_query( $conn,"select idproduto, nmproduto, sobre, idioma, formaacesso, formato, emailsuporte, 
+*/
+function listar($limit){		
+	include ("mysql.class.php");
+	
+		$query		= mysqli_query( $conn,"select idproduto, nmproduto, sobre, idioma, formaacesso, formato, emailsuporte, 
 										linkimagem1, linkimagem2, linkvideo, linkvenda, linkpgproduto , valor, destaque, avaliacaoB, nmcategoria, usuario
 										from produto
 										inner join categoria as cat on cat.idcategoria = produto.fkcategoria
 										inner join login on login.idlogin = produto.fklogin  
-										 order by destaque") or die (mysqli_error ($conn));
+										 order by destaque LIMIT 0 , $limit") or die (mysqli_error ($conn));
 				
 				
 				
@@ -126,8 +27,8 @@
 					$conteudo = substr($result["sobre"], 0, 15);  
 					
 					 $titulo = substr($result["nmproduto"], 0, 28);
-						
-				$html = '
+		
+					$html = '
 					
 							<div class="col-sm-8 col-md-3">
 							 <div class="thumbnail">
@@ -352,30 +253,6 @@
 					echo $html;
 					
 				}
-				
-				
-				?>
-			
-	     <!--<div class=" text-center">
-  <a href="index.php?pagina=prateleira&mostrar=<?=$num?>" id="link2">  <button type="reset" class="btn btn-default  "> Carregar mais ...</button> </a>
-      </div>  
-	  -->
+}
 
-        </div>
-		</div>
-		</div>
-
-
-        </div>
-        <!-- end col-6 -->
-      </div>
-    </div>
-    <!-- end container -->
-
-
- 
-
-
-
-
-  
+?>

@@ -68,7 +68,6 @@
         <div class="social_buttons">
           <a href="#" data-toggle="tooltip" data-placement="bottom" title="Instagra"><i class="fa fa-instagram"></i></a>
           <a href="#" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i class="fa fa-facebook"></i></a>
-          <a href="?pagina=login" data-toggle="tooltip" data-placement="bottom" title="Gerenciador"><i class="fa fa-cogs"></i></a>
         </div>
       </div>
     </div>
@@ -118,7 +117,9 @@
                 <li><a href="?pagina=listartigos">Blog</a>
                 </li>
 				<li><a href="?pagina=sobre">Sobre</a>
-                </li> 				
+                </li> 	
+				<li><a href="?pagina=contato">Contato</a>
+                </li> 					
               </ul>
             </div>
           </div>
@@ -246,7 +247,9 @@
 
               <li><a href="?pagina=listartigos">Blog</a></li>
 			  <li><a href="?pagina=sobre">Sobre</a></li>
+			  <li><a href="?pagina=login" data-toggle="tooltip" data-placement="bottom" title="Gerenciador"><i class="fa fa-cogs"></i></a></li>
             </ul>
+			      
           </div>
         </div>
         <!-- end large-6 -->
